@@ -1,0 +1,31 @@
+body {
+    background:url(imagenes/hotel_login.jpg);
+}
+a {
+ color:#00db00;    
+}
+
+.login-form {
+    width: 340px;
+    margin: 50px auto;
+}
+
+.login-form form {
+    margin-bottom: 0px;
+    padding: 30px;
+    padding-bottom: 5px;
+}
+
+.login-form h2 {
+    margin: 0 0 15px;
+}
+
+.form-control, .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+
+.btn {        
+    font-size: 15px;
+    font-weight: bold;
+}
