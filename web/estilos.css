@@ -2,10 +2,6 @@ body {
     background:url(imagenes/hotel_login.jpg);
 }
 
-a {
-    
-}
-
 .login-form {
     width: 340px;
     margin: 50px auto;
@@ -19,6 +15,7 @@ a {
 
 .login-form h2 {
     margin: 0 0 15px;
+    color: #22FF00;
 }
 
 .form-control, .btn {
@@ -29,4 +26,12 @@ a {
 .btn {        
     font-size: 15px;
     font-weight: bold;
+}
+
+.login-form a {
+    color: #22FF00;
+}
+
+.login-form p a {
+    color: #22FF00;
 }

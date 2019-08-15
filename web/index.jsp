@@ -20,24 +20,27 @@
     </head>
     <body>
         <div class="login-form">
-            <form action="" method="post">
-                <h2 class="text-center" style="color: #520000;">Inicie Sesión</h2>       
+            <form action="Controlador" method="post">
+                <h2 class="text-center">Inicie Sesión</h2>       
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nombre de usuario" required="required">
+                    <input type="text" class="form-control" placeholder="Nombre de usuario" name="nombreUsuario" required="required">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Contraseña" required="required">
+                    <input type="password" class="form-control" placeholder="Contrasena" name="contrasena" required="required">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
                 </div>
                 <div class="clearfix">
-                    <label class="pull-left checkbox-inline" style="color: #520000;"><input type="checkbox"> Recuérdame</label>
-                    <a href="#" class="pull-right" style="color: #520000;">Olvidó su contraseña</a>
+                    <label class="pull-left checkbox-inline" style="color: #22FF00;"><input type="checkbox"> Recuérdame</label>
+                    <a href="#" class="pull-right">Olvidó su contrasena</a>
                 </div>        
             </form>
-            <p class="text-center"><a href="#" style="color: #520000;">Crea una Cuenta</a></p>
+            <p class="text-center"><a href="#">Crea una Cuenta</a></p>
         </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 </html>                                		                            
 </body>
