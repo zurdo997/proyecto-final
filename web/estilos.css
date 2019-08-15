@@ -1,9 +1,6 @@
 body {
     background:url(imagenes/hotel_login.jpg);
 }
-a {
- color:#00db00;    
-}
 
 .login-form {
     width: 340px;

@@ -14,14 +14,14 @@
         <meta content="Sistema web de reservas para hotel" name="description"/>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="estilos.css" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" href="imagenes/favicon1.ico" type="image/x-icon">
-        <link rel="icon" href="imagenes/favicon1.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="imagenes/faviconhotel1.ico" type="image/x-icon">
+        <link rel="icon" href="imagenes/faviconhotel1.ico" type="image/x-icon">
         <title>Reservas para hotel</title>
     </head>
     <body>
         <div class="login-form">
             <form action="" method="post">
-                <h2 class="text-center">Inicie Sesión</h2>       
+                <h2 class="text-center" style="color: #520000;">Inicie Sesión</h2>       
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Nombre de usuario" required="required">
                 </div>
@@ -32,7 +32,7 @@
                     <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
                 </div>
                 <div class="clearfix">
-                    <label class="pull-left checkbox-inline"><input type="checkbox"> Recuérdame</label>
+                    <label class="pull-left checkbox-inline" style="color: #520000;"><input type="checkbox"> Recuérdame</label>
                     <a href="#" class="pull-right">Olvidó su contraseña</a>
                 </div>        
             </form>
