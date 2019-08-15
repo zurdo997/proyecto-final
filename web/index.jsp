@@ -12,8 +12,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta content="Alan Franco" name="author"/>
         <meta content="Sistema web de reservas para hotel" name="description"/>
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link rel="shortcut icon" href="imagenes/faviconhotel1.ico" type="image/x-icon">
         <link rel="icon" href="imagenes/faviconhotel1.ico" type="image/x-icon">
         <title>Reservas para hotel</title>
@@ -33,10 +33,10 @@
                 </div>
                 <div class="clearfix">
                     <label class="pull-left checkbox-inline" style="color: #520000;"><input type="checkbox"> Recuérdame</label>
-                    <a href="#" class="pull-right">Olvidó su contraseña</a>
+                    <a href="#" class="pull-right" style="color: #520000;">Olvidó su contraseña</a>
                 </div>        
             </form>
-            <p class="text-center"><a href="#">Crea una Cuenta</a></p>
+            <p class="text-center"><a href="#" style="color: #520000;">Crea una Cuenta</a></p>
         </div>
     </body>
 </html>                                		                            
