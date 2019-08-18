@@ -14,9 +14,7 @@
         <link rel="icon" href="imagenes/faviconhotel1.ico" type="image/x-icon">
         <title>Pantalla Principal</title>
     </head>
-    <body>
-        <h1>Bienvenido <%= request.getParameter("nombre") %></h1>
-        
-        <h1>Eres el número <%= request.getParameter("numero") %></h1>
+    <body class="bg-info">
+        <%--<h1>Bienvenido <%= request.getParameter("nombre")%></h1>--%>
     </body>
 </html>

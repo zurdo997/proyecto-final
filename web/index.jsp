@@ -26,14 +26,14 @@
                     <input type="text" class="form-control" placeholder="Nombre de usuario" name="nombreUsuario" required="required">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Contrasena" name="contrasena" required="required">
+                    <input type="password" class="form-control" placeholder="Contraseña" name="contrasena" required="required">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
                 </div>
                 <div class="clearfix">
                     <label class="pull-left checkbox-inline" style="color: #22FF00;"><input type="checkbox"> Recuérdame</label>
-                    <a href="#" class="pull-right">Olvidó su contrasena</a>
+                    <a href="#" class="pull-right">Olvidó su contraseña</a>
                 </div>        
             </form>
             <p class="text-center"><a href="#">Crea una Cuenta</a></p>
@@ -42,6 +42,4 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
-</html>                                		                            
-</body>
 </html>

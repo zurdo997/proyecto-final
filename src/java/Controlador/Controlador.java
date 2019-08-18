@@ -30,9 +30,9 @@ public class Controlador extends HttpServlet {
 
         nombre = request.getParameter("nombreUsuario");
         contrasena = request.getParameter("contrasena");
-        
-        if (nombre.equals(usuarioDefecto)&&contrasena.equals(contrasenaDefecto)) {
-            response.sendRedirect("PantallaPrincipal.jsp?nombre="+nombre+"&numero=3");
+
+        if (nombre.equals(usuarioDefecto) && contrasena.equals(contrasenaDefecto)) {
+            response.sendRedirect("PantallaPrincipal.jsp?nombre=" + nombre);
         } else {
             response.sendRedirect("PantallaError.jsp");
         }
