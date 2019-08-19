@@ -7,6 +7,7 @@ package Controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,16 +27,6 @@ public class Controlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        String nombre, contrasena;
-
-        nombre = request.getParameter("nombreUsuario");
-        contrasena = request.getParameter("contrasena");
-
-        if (nombre.equals(usuarioDefecto) && contrasena.equals(contrasenaDefecto)) {
-            response.sendRedirect("PantallaPrincipal.jsp?nombre=" + nombre);
-        } else {
-            response.sendRedirect("PantallaError.jsp");
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -65,6 +56,21 @@ public class Controlador extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        PrintWriter out = response.getWriter();
+        
+        String nombre, contra;
+        nombre = request.getParameter("nombreUsuario");
+        contra = request.getParameter("contra");
+        int intentos=0;
+        if (nombre.equals(usuarioDefecto) && contra.equals(contrasenaDefecto)) {
+            response.sendRedirect("PantallaPrincipal.jsp?nombre=" + nombre + "&numero=3&intento=7");
+        } else {
+            intentos++;
+            RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+            view.include(request, response);            
+        }
+        out.print("<p style=\"color:#ffc107;text-align:center;margin-bottom:0px\">El nombre de usuario o la contraseña no es correcto.</p>");
+        out.print("<p style=\"color:#ffc107;text-align:center;margin-bottom:0px\">Cantidad de intentos: "+intentos+"</p>");
     }
 
     /**
