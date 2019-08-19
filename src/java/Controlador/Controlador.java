@@ -57,20 +57,22 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         PrintWriter out = response.getWriter();
-        
+
         String nombre, contra;
         nombre = request.getParameter("nombreUsuario");
         contra = request.getParameter("contra");
-        int intentos=0;
+        int intentos = 0;
         if (nombre.equals(usuarioDefecto) && contra.equals(contrasenaDefecto)) {
             response.sendRedirect("PantallaPrincipal.jsp?nombre=" + nombre + "&numero=3&intento=7");
+        } else if (intentos > 3) {
+            out.print("ERROR");
         } else {
+            request.setAttribute("errorMessage", "El nombre de usuario o la contraseña no es correcto.");
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
             intentos++;
-            RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
-            view.include(request, response);            
+            request.setAttribute("nroIntentos", intentos);
         }
-        out.print("<p style=\"color:#ffc107;text-align:center;margin-bottom:0px\">El nombre de usuario o la contraseña no es correcto.</p>");
-        out.print("<p style=\"color:#ffc107;text-align:center;margin-bottom:0px\">Cantidad de intentos: "+intentos+"</p>");
+
     }
 
     /**

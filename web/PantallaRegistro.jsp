@@ -60,7 +60,7 @@
                 outline: none !important;
             }	
             .signup-form a{
-                color: #0069d9;
+                color: #007bff;
                 text-decoration: underline;
             }
         </style>

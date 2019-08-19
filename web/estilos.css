@@ -31,12 +31,12 @@ body {
 }
 
 .login-form a {
-    color: #d51a56;
+    color: #007bff;
     text-decoration: underline;
 }
 
 .login-form p a {
-    color: #d51a56;
+    color: #007bff;
     text-decoration: underline;
     margin: 0px;
 }
