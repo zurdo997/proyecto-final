@@ -63,11 +63,11 @@
                 color: #007bff;
                 text-decoration: underline;
             }
-            .login-form a:hover{
+            .signup-form a:hover{
                 color: white;
             }
 
-            .login-form a:active{
+            .signup-form a:active{
                 color: red;
             }
         </style>

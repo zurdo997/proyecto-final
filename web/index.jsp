@@ -42,8 +42,8 @@
                 <% if(request.getAttribute("cantidadIncorrectos")!=null) { 
                 %>
                 <p class="text-center" style="color:#ffc107">Contraseña Incorrecta</p>
-                <p class="text-center" style="color:#ffc107">Cantidad de intentos:</p>
-                <%= request.getAttribute("cantidadIncorrectos") %>
+                <p class="text-center" style="color:#ffc107">Cantidad de intentos:
+                <%= request.getAttribute("cantidadIncorrectos") %></p>
                 <% }
                 %>
             </div>
