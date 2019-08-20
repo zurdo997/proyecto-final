@@ -61,18 +61,31 @@ public class Controlador extends HttpServlet {
         String nombre, contra;
         nombre = request.getParameter("nombreUsuario");
         contra = request.getParameter("contra");
-        int intentos = 0;
-        if (nombre.equals(usuarioDefecto) && contra.equals(contrasenaDefecto)) {
+        int intento = 3;
+        /*if (nombre.equals(usuarioDefecto) && contra.equals(contrasenaDefecto)) {
             response.sendRedirect("PantallaPrincipal.jsp?nombre=" + nombre + "&numero=3&intento=7");
-        } else if (intentos > 3) {
-            out.print("ERROR");
         } else {
             request.setAttribute("errorMessage", "El nombre de usuario o la contraseña no es correcto.");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
-            intentos++;
-            request.setAttribute("nroIntentos", intentos);
+            intento++;*/
+        if (intento != 0) {
+            if (nombre.equals(usuarioDefecto) && contra.equals(contrasenaDefecto)) {
+                response.sendRedirect("PantallaPrincipal.jsp?nombre=" + nombre + "&numero=3&intento=7");
+            } else {
+                request.setAttribute("errorMessage", "El nombre de usuario o la contraseña no es correcto.");
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                intento--;
+            }
+            //request.setAttribute("max", "Ha alcanzado el maximo de intentos");
+            //request.getRequestDispatcher("/index.jsp").forward(request, response);
+            //out.print("<p style=\"color:#ffc107;text-align:center;margin-bottom:0px\">Ha alcanzado el maximo de intentos</p>");
+            //else 
+            //request.setAttribute("intentos", "Cantidad de intentos: " + intento);
+            //request.getRequestDispatcher("/index.jsp").forward(request, response);
+            //out.print("<p style=\"color:#ffc107;text-align:center;margin-bottom:0px\">Cantidad de intentos: "+intento+"</p>");
+        } else {
+            out.print("<p style=\"color:#ffc107;text-align:center;margin-bottom:0px\">Ha alcanzado el maximo de intentos</p>");
         }
-
     }
 
     /**
