@@ -38,12 +38,18 @@
                 </div>        
             </form>
             <p class="text-center"><a href="PantallaRegistro.jsp">Crea una Cuenta</a></p>
+            <div>
+                <% if(request.getAttribute("cantidadIncorrectos")!=null) { 
+                %>
+                <p class="text-center">Contraseña Incorrecta</p>
+                <p class="text-center">Cantidad de intentos:</p>
+                <%= request.getAttribute("cantidadIncorrectos") %>
+                <% }
+                %>
+            </div>
+            
         </div>
-        <p style="color:#ffc107;text-align:center;margin-bottom:0px">${errorMessage}</p>
-        <p style="color:#ffc107;text-align:center;margin-bottom:0px">Cantidad de intentos: <%= request.getParameter("intento") %></p>
-        <%--<p style="color:#ffc107;text-align:center;margin-bottom:0px">${max}</p>
-        <p style="color:#ffc107;text-align:center;margin-bottom:0px">${intentos}</p>
-        <p style="color:#ffc107;text-align:center;margin-bottom:0px">Cantidad de intentos: <%= request.getParameter("intento") %></p>--%>
+        
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
