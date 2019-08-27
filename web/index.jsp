@@ -21,16 +21,16 @@
     </head>
     <body style="font-family:'Nunito', sans-serif;">
         <div class="login-form">
-            <form action="Controlador" method="post">
+            <form action="ValidarInicio" method="POST">
                 <h2 class="text-center">Inicie Sesión</h2>       
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nombre de usuario" name="nombreUsuario" required="required">
+                    <input type="text" class="form-control" placeholder="Nombre de usuario" name="txtuser" required="required">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Contraseña" name="contra" required="required">
+                    <input type="password" class="form-control" placeholder="Contraseña" name="txtpass" required="required">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                    <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block">
                 </div>
                 <div class="clearfix">
                     <label class="pull-left checkbox-inline" style="color: #d51a56"><input type="checkbox"> Recuérdame</label>
@@ -47,7 +47,6 @@
                 <% }
                 %>
             </div>
-            
         </div>
         
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

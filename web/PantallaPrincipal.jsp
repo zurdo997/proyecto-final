@@ -109,7 +109,7 @@
                         <a class="nav-link" href="#">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Habitaciones</a>
+                        <a class="nav-link" href="Controlador?menu=Habitaciones&accion=Listar" target="myFrame">Habitaciones</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Reservas</a>
@@ -120,14 +120,15 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right ml-auto">
                     <li class="nav-item dropdown">
-                        <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action">Usuario HOLA</a>
-                        <ul class="dropdown-menu">
+                        <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action">Usuario</a>
+                        <ul class="dropdown-menu text-center">
                             <li><a class="dropdown-item" href="#"><img src="imagenes/user-logo.jpg" alt="75" width="75"/></a>
                             </li>
                             <li><a class="dropdown-item" href="#">Usuario</a></li>
                             <li><a class="dropdown-item" href="#">usuario@gmail.com</a></li>
                             <li class="divider dropdown-divider"></li>
-                            <li><form action="Validar" method="POST">
+                            <li>
+                                <form action="ValidarInicio" method="POST">
                                     <button name="accion" value="Salir" class="dropdown-item" href="#">Salir</button>
                                 </form>
                             </li>
@@ -137,6 +138,9 @@
             </div>
         </nav>
         <header>
+            <div class="m-4" style="height: 550px">
+                <iframe name="myFrame" style="height: 100%;width: 100%;border: none"></iframe>
+            </div>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
