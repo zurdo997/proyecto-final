@@ -63,7 +63,7 @@ public class Controlador extends HttpServlet {
         contra = request.getParameter("contra");
         
         if (nombre.equals(usuarioDefecto) && contra.equals(contrasenaDefecto)) {
-            response.sendRedirect("PantallaPrincipal.jsp?nombre=" + nombre + "&numero=3&intento=7");
+            response.sendRedirect("PantallaPrincipal.jsp?nombre=" + nombre);
         } else {
             contadorError++;
             request.setAttribute("cantidadIncorrectos", contadorError);
