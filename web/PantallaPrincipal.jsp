@@ -96,30 +96,35 @@
         <title>Pantalla Principal</title>
     </head>
     <body style="font-family: 'Nunito', sans-serif">
-        <%--<h1>Bienvenido <%= request.getParameter("nombre") %></h1>--%>
         <nav class="navbar nav-bk navbar-default navbar-expand-xl navbar-light">
             <!-- Collection of nav links, forms, and other content for toggling -->
             <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" href="#">Home</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" href="PantallaPrincipal.jsp">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" href="#">Servicios</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow1' href="Servicios.jsp" target="myFrame">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow' href="Controlador?menu=Habitaciones&accion=Listar" target="myFrame">Habitaciones</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow2' href="Controlador?menu=Empleados&accion=Listar" target="myFrame">Empleados</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" href="#">Reservas</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow3' href="Controlador?menu=Habitaciones&accion=Listar" target="myFrame">Habitaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" href="#">Contacto</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow4' href="Clientes.jsp" target="myFrame">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow5' href="Reservas.jsp" target="myFrame">Reservas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow6' href="Contacto.jsp" target="myFrame">Contacto</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right ml-auto">
                     <li class="nav-item dropdown">
-                        <a style="color: #ffffff" href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action">${usuario.getNom()}</a>
+                        <a style="color: #ffffff" href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action">${usuario.getNom()} ${usuario.getApe()}</a>
                         <ul class="dropdown-menu dropdown-menu-right text-center">
                             <li><a class="dropdown-item"><img src="imagenes/user-logo.jpg" alt="75" width="75"/></a>
                             </li>
@@ -187,7 +192,32 @@
         </footer>
         <script id="rendered-js">
             $(document).ready(function () {
-                $('#hideshow').on('click', function (event) {
+                $('#hideshow1').on('click', function (event) {
+                    $('.content').toggle('show');
+                });
+            });
+            $(document).ready(function () {
+                $('#hideshow2').on('click', function (event) {
+                    $('.content').toggle('show');
+                });
+            });
+            $(document).ready(function () {
+                $('#hideshow3').on('click', function (event) {
+                    $('.content').toggle('show');
+                });
+            });
+            $(document).ready(function () {
+                $('#hideshow4').on('click', function (event) {
+                    $('.content').toggle('show');
+                });
+            });
+            $(document).ready(function () {
+                $('#hideshow5').on('click', function (event) {
+                    $('.content').toggle('show');
+                });
+            });
+            $(document).ready(function () {
+                $('#hideshow6').on('click', function (event) {
                     $('.content').toggle('show');
                 });
             });

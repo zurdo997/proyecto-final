@@ -74,25 +74,25 @@
     </head>
 <body>
     <div class="signup-form">
-        <form action="" method="post">
+        <form action="Controlador?menu=Registrar" method="POST">
             <h2>Registrate</h2>
             <div class="form-group">
-                <input type="text" class="form-control" name="nombre" placeholder="Nombre" required="required">
+                <input type="text" class="form-control" name="txtDni" placeholder="Dni" required="required">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" name="apellido" placeholder="Apellido" required="required">
+                <input type="text" class="form-control" name="txtNombre" placeholder="Nombre" required="required">
             </div>
             <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Correo electrónico" required="required">
+                <input type="text" class="form-control" name="txtApellido" placeholder="Apellido" required="required">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name="contra" placeholder="Contraseña" required="required">
+                <input type="text" class="form-control" name="txtTel" placeholder="Teléfono" required="required">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name="confirma_contra" placeholder="Confirma Contraseña" required="required">
+                <input type="text" class="form-control" name="txtUser" placeholder="Nombre de usuario" required="required">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Registrate ahora</button>
+                <button type="submit" name="accion" value="AgregarE" class="btn btn-primary btn-block">Registrate ahora</button>
             </div>
         </form>
         <div class="text-center">¿Ya tienes cuenta? <a href="index.jsp">Iniciar Sesión</a></div>

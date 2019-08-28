@@ -13,6 +13,7 @@ public class Empleado {
     int id;
     String dni;
     String nom;
+    String ape;
     String tel;
     String user;
     
@@ -20,10 +21,11 @@ public class Empleado {
         
     }
 
-    public Empleado(int id, String dni, String nom, String tel, String user) {
+    public Empleado(int id, String dni, String nom,String ape, String tel, String user) {
         this.id = id;
         this.dni = dni;
         this.nom = nom;
+        this.ape = ape;
         this.tel = tel;
         this.user = user;
     }
@@ -50,6 +52,14 @@ public class Empleado {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getApe() {
+        return ape;
+    }
+
+    public void setApe(String ape) {
+        this.ape = ape;
     }
 
     public String getTel() {

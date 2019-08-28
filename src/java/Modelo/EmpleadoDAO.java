@@ -37,6 +37,7 @@ public class EmpleadoDAO {
                 em.setUser(rs.getString("user"));
                 em.setDni(rs.getString("dni"));
                 em.setNom(rs.getString("nombres"));
+                em.setApe(rs.getString("apellido"));
             }
         } catch (Exception e) {
         }
@@ -57,29 +58,33 @@ public class EmpleadoDAO {
                 em.setId(rs.getInt(1));
                 em.setDni(rs.getString(2));
                 em.setNom(rs.getString(3));
-                em.setTel(rs.getString(4));
-                em.setUser(rs.getString(5));
+                em.setApe(rs.getString(4));
+                em.setTel(rs.getString(5));
+                em.setUser(rs.getString(6));
                 lista.add(em);
             }
         } catch (Exception e) {
         }
         return lista;
     }
+    
     public int agregar(Empleado em){ 
-        String sql="insert into empleado(dni,nombres,telefono,user)values(?,?,?,?)";
+        String sql="insert into empleado(dni,nombres,apellido,telefono,user)values(?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, em.getDni());
             ps.setString(2, em.getNom());
-            ps.setString(3, em.getTel());
-            ps.setString(4, em.getUser());
+            ps.setString(3, em.getApe());
+            ps.setString(4, em.getTel());
+            ps.setString(5, em.getUser());
             ps.executeUpdate();
         } catch (Exception e) {
         }
         return r;
         
     }
+    
     public Empleado listarId(int id){
         Empleado emp = new Empleado();
         String sql="select * from empleado where id="+id;
@@ -90,28 +95,32 @@ public class EmpleadoDAO {
             while (rs.next()) {
                 emp.setDni(rs.getString(2));
                 emp.setNom(rs.getString(3));
-                emp.setTel(rs.getString(4));
-                emp.setUser(rs.getString(5));
+                emp.setApe(rs.getString(4));
+                emp.setTel(rs.getString(5));
+                emp.setUser(rs.getString(6));
             }
         } catch (Exception e) {
         }
         return emp;
     }
+    
     public int actualizar(Empleado em){
-        String sql="update empleado set dni=?, nombres=?, telefono=?,user=? where id=?";
+        String sql="update empleado set dni=?, nombres=?, apellido=?, telefono=?,user=? where id=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, em.getDni());
             ps.setString(2, em.getNom());
-            ps.setString(3, em.getTel());
-            ps.setString(4, em.getUser());
+            ps.setString(3, em.getApe());
+            ps.setString(4, em.getTel());
+            ps.setString(5, em.getUser());
             ps.setInt(6, em.getId());
             ps.executeUpdate();
         } catch (Exception e) {
         }
         return r;
     }
+    
     public void eliminar(int id){
         String sql = "delete from empleado where id="+id;
         try {

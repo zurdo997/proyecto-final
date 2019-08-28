@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import Modelo.Empleado;
+import Modelo.EmpleadoDAO;
 import Modelo.Habitaciones;
 import Modelo.HabitacionesDAO;
 import java.io.IOException;
@@ -23,7 +25,10 @@ public class Controlador extends HttpServlet {
     int contadorError = 0;
     Habitaciones hab = new Habitaciones();
     HabitacionesDAO habdao = new HabitacionesDAO();
+    Empleado em = new Empleado();
+    EmpleadoDAO emdao = new EmpleadoDAO();
     int idh;
+    int ide;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,6 +39,80 @@ public class Controlador extends HttpServlet {
         if (menu.equals("PantallaPrincipal")) {
             request.getRequestDispatcher("PantallaPrincipal.jsp").forward(request, response);
         }
+        
+        if (menu.equals("Registrar")) {
+            switch(accion) {
+                case "AgregarE":
+                    String dni = request.getParameter("txtDni");
+                    String nom = request.getParameter("txtNombre");
+                    String ape = request.getParameter("txtApellido");
+                    String tel = request.getParameter("txtTel");
+                    String user = request.getParameter("txtUser");
+                    em.setDni(dni);
+                    em.setNom(nom);
+                    em.setApe(ape);
+                    em.setTel(tel);
+                    em.setUser(user);
+                    emdao.agregar(em);
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        }
+        
+        if (menu.equals("Empleados")) {
+            switch(accion) {
+                case "Listar":
+                    List lista = emdao.listar();
+                    request.setAttribute("empleados", lista);
+                    break;
+                case "Agregar":
+                    String dni = request.getParameter("txtDni");
+                    String nom = request.getParameter("txtNombre");
+                    String ape = request.getParameter("txtApellido");
+                    String tel = request.getParameter("txtTel");
+                    String user = request.getParameter("txtUser");
+                    em.setDni(dni);
+                    em.setNom(nom);
+                    em.setApe(ape);
+                    em.setTel(tel);
+                    em.setUser(user);
+                    emdao.agregar(em);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    ide = Integer.parseInt(request.getParameter("id"));
+                    Empleado e = emdao.listarId(ide);
+                    request.setAttribute("empleado", e);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
+                    break;
+                case "Actualizar":
+                    String dni2 = request.getParameter("txtDni");
+                    String nom2 = request.getParameter("txtNombre");
+                    String ape2 = request.getParameter("txtApellido");
+                    String tel2 = request.getParameter("txtTel");
+                    String user2 = request.getParameter("txtUser");
+                    em.setDni(dni2);
+                    em.setNom(nom2);
+                    em.setApe(ape2);
+                    em.setTel(tel2);
+                    em.setUser(user2);
+                    em.setId(ide);
+                    emdao.actualizar(em);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
+                    break;
+                case "Eliminar":
+                    ide = Integer.parseInt(request.getParameter("id"));
+                    emdao.eliminar(ide);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            request.getRequestDispatcher("Empleados.jsp").forward(request, response);
+        }
+        
         if (menu.equals("Habitaciones")) {
             switch (accion) {
                 case "Listar":
