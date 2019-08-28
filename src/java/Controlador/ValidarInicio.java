@@ -71,7 +71,7 @@ public class ValidarInicio extends HttpServlet {
             em = emdao.validar(user, pass);
             if (em.getUser() != null) {
                 request.setAttribute("usuario", em);
-                request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
+                request.getRequestDispatcher("Controlador?menu=PantallaPrincipal").forward(request, response);
             } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }

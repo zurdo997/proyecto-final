@@ -16,17 +16,20 @@ public class Habitaciones {
     int piso;
     int numero;
     double precio;
+    String estado;
     
     public Habitaciones() {
         
     }
 
-    public Habitaciones(int id,String tipo_hab, int cant, int piso, int numero, double precio) {
+    public Habitaciones(int id,String tipo_hab, int cant, int piso, int numero, double precio, String estado) {
         this.id = id;
         this.tipo_hab = tipo_hab;
         this.cant = cant;
         this.piso = piso;
         this.numero = numero;
+        this.precio = precio;
+        this.estado = estado;
     }
 
     public String getTipo_hab() {
@@ -75,6 +78,14 @@ public class Habitaciones {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
 }

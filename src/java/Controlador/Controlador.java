@@ -23,6 +23,7 @@ public class Controlador extends HttpServlet {
     int contadorError = 0;
     Habitaciones hab = new Habitaciones();
     HabitacionesDAO habdao = new HabitacionesDAO();
+    int idh;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -30,34 +31,64 @@ public class Controlador extends HttpServlet {
         PrintWriter out = response.getWriter();
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-        if (menu.equals("Principal")) {
+        if (menu.equals("PantallaPrincipal")) {
             request.getRequestDispatcher("PantallaPrincipal.jsp").forward(request, response);
-        } else {
-            contadorError++;
-            request.setAttribute("cantidadIncorrectos", contadorError);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         if (menu.equals("Habitaciones")) {
             switch (accion) {
                 case "Listar":
                     List lista = habdao.listar();
-                    request.setAttribute("productos", lista);
+                    request.setAttribute("habitaciones", lista);
                     break;
                 case "Agregar":
-                    String dni = request.getParameter("txtDni");
-                    double pre = Double.parseDouble(request.getParameter("txtNombres"));
-                    int st = Integer.parseInt(request.getParameter("txtTel"));
+                    String tipoHab = request.getParameter("txtTipo");
+                    int cant = Integer.parseInt(request.getParameter("txtCant"));
+                    int piso = Integer.parseInt(request.getParameter("txtPiso"));
+                    int num = Integer.parseInt(request.getParameter("txtNum"));
+                    double precio = Double.parseDouble(request.getParameter("txtPre"));
                     String est = request.getParameter("txtEstado");
-                    p.setNom(dni);
-                    p.setPre(pre);
-                    p.setStock(st);
-                    p.setEstado(est);
-                    pdao.agregar(p);
-                    request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
+                    hab.setTipo_hab(tipoHab);
+                    hab.setCant(cant);
+                    hab.setPiso(piso);
+                    hab.setNumero(num);
+                    hab.setPrecio(precio);
+                    hab.setEstado(est);
+                    habdao.agregar(hab);
+                    request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
                     break;
+                case "Editar":
+                    idh = Integer.parseInt(request.getParameter("id"));
+                    Habitaciones h = habdao.listarId(idh);
+                    request.setAttribute("habitacion", h);
+                    request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
+                    break;
+                case "Actualizar":
+                    String tipoHab2 = request.getParameter("txtTipo");
+                    int cant2 = Integer.parseInt(request.getParameter("txtCant"));
+                    int piso2 = Integer.parseInt(request.getParameter("txtPiso"));
+                    int num2 = Integer.parseInt(request.getParameter("txtNum"));
+                    double precio2 = Double.parseDouble(request.getParameter("txtPre"));
+                    String est2 = request.getParameter("txtEstado");
+                    hab.setTipo_hab(tipoHab2);
+                    hab.setCant(cant2);
+                    hab.setPiso(piso2);
+                    hab.setNumero(num2);
+                    hab.setPrecio(precio2);
+                    hab.setEstado(est2);
+                    hab.setId(idh);
+                    habdao.actualizar(hab);
+                    request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
+                    break;
+                case "Eliminar":
+                    idh = Integer.parseInt(request.getParameter("id"));
+                    habdao.eliminar(idh);
+                    request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
+                    break;
+                default:
+                    throw new AssertionError();
             }
+            request.getRequestDispatcher("Habitaciones.jsp").forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

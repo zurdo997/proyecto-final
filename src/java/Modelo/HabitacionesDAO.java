@@ -39,6 +39,7 @@ public class HabitacionesDAO {
                 hab.setPiso(rs.getInt(4));
                 hab.setNumero(rs.getInt(5));
                 hab.setPrecio(rs.getDouble(6));
+                hab.setEstado(rs.getString(7));
                 lista.add(hab);
             }
         } catch (Exception e) {
@@ -46,8 +47,29 @@ public class HabitacionesDAO {
         return lista;
     }
     
+    public Habitaciones listarId(int id) {
+        Habitaciones hab = new Habitaciones();
+        String sql = "select * from habitaciones where id=" + id;
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                hab.setId(rs.getInt(1));
+                hab.setTipo_hab(rs.getString(2));
+                hab.setCant(rs.getInt(3));
+                hab.setPiso(rs.getInt(4));
+                hab.setNumero(rs.getInt(5));
+                hab.setPrecio(rs.getDouble(6));
+                hab.setEstado(rs.getString(7));
+            }
+        } catch (Exception e) {
+        }
+        return hab;
+    }
+    
     public int agregar(Habitaciones h) {
-        String sql = "insert into habitaciones(tipo, cant_camas, piso, numero, precio)values(?,?,?,?,?)";
+        String sql = "insert into habitaciones(tipo, cant_camas, piso, numero, precio, estado)values(?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -56,6 +78,7 @@ public class HabitacionesDAO {
             ps.setInt(3, h.getPiso());
             ps.setInt(4, h.getNumero());
             ps.setDouble(5, h.getPrecio());
+            ps.setString(6, h.getEstado());
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -63,7 +86,7 @@ public class HabitacionesDAO {
     }
     
     public int actualizar(Habitaciones hbt) {
-        String sql = "update habitaciones set tipo=?, cant_camas=?, piso=?, numero=?, precio=? where id=?";
+        String sql = "update habitaciones set tipo=?, cant_camas=?, piso=?, numero=?, precio=?, estado=? where id=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -72,7 +95,8 @@ public class HabitacionesDAO {
             ps.setInt(3, hbt.getPiso());
             ps.setInt(4, hbt.getNumero());
             ps.setDouble(5, hbt.getPrecio());
-            ps.setInt(6, hbt.getId());
+            ps.setString(6, hbt.getEstado());
+            ps.setInt(7, hbt.getId());
             ps.executeUpdate();
         } catch (Exception e) {
         }
