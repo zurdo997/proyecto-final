@@ -46,35 +46,39 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <table class="table table-hover text-center">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>DNI</th>
-                            <th>NOMBRES</th>
-                            <th>APELLIDO</th>
-                            <th>TELEFONO</th>
-                            <th>USER</th>
-                            <th>ACCIONES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="em" items="${empleados}">
-                            <tr>
-                                <td>${em.getId()}</td>
-                                <td>${em.getDni()}</td>
-                                <td>${em.getNom()}</td>
-                                <td>${em.getApe()}</td>
-                                <td>${em.getTel()}</td>
-                                <td>${em.getUser()}</td>
-                                <td>
-                                    <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&id=${em.getId()}">Editar</a>
-                                    <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&id=${em.getId()}">Eliminar</a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-hover text-center">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>DNI</th>
+                                    <th>NOMBRES</th>
+                                    <th>APELLIDO</th>
+                                    <th>TELEFONO</th>
+                                    <th>USER</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="em" items="${empleados}">
+                                    <tr>
+                                        <td>${em.getId()}</td>
+                                        <td>${em.getDni()}</td>
+                                        <td>${em.getNom()}</td>
+                                        <td>${em.getApe()}</td>
+                                        <td>${em.getTel()}</td>
+                                        <td>${em.getUser()}</td>
+                                        <td>
+                                            <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&id=${em.getId()}">Editar</a>
+                                            <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&id=${em.getId()}">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

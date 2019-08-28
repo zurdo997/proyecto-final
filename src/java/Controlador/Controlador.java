@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import Modelo.Cliente;
+import Modelo.ClienteDAO;
 import Modelo.Empleado;
 import Modelo.EmpleadoDAO;
 import Modelo.Habitaciones;
@@ -27,8 +29,11 @@ public class Controlador extends HttpServlet {
     HabitacionesDAO habdao = new HabitacionesDAO();
     Empleado em = new Empleado();
     EmpleadoDAO emdao = new EmpleadoDAO();
+    Cliente cl = new Cliente();
+    ClienteDAO cldao = new ClienteDAO();
     int idh;
     int ide;
+    int idc;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -167,6 +172,54 @@ public class Controlador extends HttpServlet {
                     throw new AssertionError();
             }
             request.getRequestDispatcher("Habitaciones.jsp").forward(request, response);
+        }
+        
+        if (menu.equals("Clientes")) {
+            switch (accion) {
+                case "Listar":
+                    List lista = cldao.listar();
+                    request.setAttribute("clientes", lista);
+                    break;
+                case "Agregar":
+                    String dni = request.getParameter("txtDni");
+                    String nom = request.getParameter("txtNombres");
+                    String ape = request.getParameter("txtApellido");
+                    String tel = request.getParameter("txtTel");
+                    cl.setDni(dni);
+                    cl.setNom(nom);
+                    cl.setApe(ape);
+                    cl.setTel(tel);
+                    cldao.agregar(cl);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    idc = Integer.parseInt(request.getParameter("id"));
+                    Cliente c = cldao.listarId(idc);
+                    request.setAttribute("cliente", c);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    break;
+                case "Actualizar":
+                    String dni1 = request.getParameter("txtDni");
+                    String nom1 = request.getParameter("txtNombres");
+                    String ape1 = request.getParameter("txtApellido");
+                    String tel1 = request.getParameter("txtTel");
+                    cl.setDni(dni1);
+                    cl.setNom(nom1);
+                    cl.setApe(ape1);
+                    cl.setTel(tel1);
+                    cl.setId(idc);
+                    cldao.actualizar(cl);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    break;
+                case "Eliminar":
+                    idc = Integer.parseInt(request.getParameter("id"));
+                    cldao.eliminar(idc);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            request.getRequestDispatcher("Clientes.jsp").forward(request, response);
         }
     }
 
