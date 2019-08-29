@@ -12,11 +12,19 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Habitaciones</title>
+        <style>
+            .card {
+                border: none;
+            }
+            .table td, .table th {
+                border: none;
+            }
+        </style>
     </head>
     <body style="font-family: 'Nunito', sans-serif">
         <div class="d-flex">
             <div class="col-sm-3">
-                <div class="card">
+                <div class="card" style="border:none">
                     <div class="card-body">
                         <form action="Controlador?menu=Habitaciones" method="POST">
                             <div class="form-group">

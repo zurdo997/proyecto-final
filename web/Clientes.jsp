@@ -12,6 +12,14 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
         <title>Clientes</title>
+        <style>
+            .card {
+                border: none;
+            }
+            .table td, .table th {
+                border: none;
+            }
+        </style>
     </head>
     <body style="font-family: 'Nunito', sans-serif">
         <div class="d-flex">
@@ -41,7 +49,7 @@
                     </div>                         
                 </div>
             </div>                     
-            <div class="col-sm-8">
+            <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-hover table-responsive text-center">

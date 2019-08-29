@@ -14,11 +14,14 @@
         <title>JSP Page</title>
         <style>
             .item {
-                border-bottom: 60px solid #EEE;
+                border-bottom: 60px solid transparent;
                 height: 120px;
                 padding-top: 20px;
                 margin-bottom: 40px;
                 color: #bd0042;
+            }
+            .card {
+                border: none;
             }
         </style>
     </head>
