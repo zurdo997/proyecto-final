@@ -35,7 +35,7 @@ public class ServiciosDAO {
                 Servicios ser = new Servicios();
                 ser.setId(rs.getInt(1));
                 ser.setDescripcion(rs.getString(2));
-                ser.setDisp(rs.getBoolean(3));
+                ser.setDisp(rs.getString(3));
                 lista.add(ser);
             }
         } catch (Exception e) {
@@ -45,7 +45,7 @@ public class ServiciosDAO {
     
     public Servicios listarId(int id) {
         Servicios ser = new Servicios();
-        String sql = "select * from servicios where id=" + id;
+        String sql = "select * from servicios where id_serv=" + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -53,7 +53,7 @@ public class ServiciosDAO {
             while (rs.next()) {
                 ser.setId(rs.getInt(1));
                 ser.setDescripcion(rs.getString(2));
-                ser.setDisp(rs.getBoolean(3));
+                ser.setDisp(rs.getString(3));
             }
         } catch (Exception e) {
         }
@@ -66,7 +66,7 @@ public class ServiciosDAO {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, s.getDescripcion());
-            ps.setBoolean(2, s.isDisp());
+            ps.setString(2, s.getDisp());
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -74,12 +74,12 @@ public class ServiciosDAO {
     }
     
     public int actualizar(Servicios se) {
-        String sql = "update servicios set descripcion=?, disponible=? where id=?";
+        String sql = "update servicios set descripcion=?, disponible=? where id_serv=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, se.getDescripcion());
-            ps.setBoolean(2, se.isDisp());
+            ps.setString(2, se.getDisp());
             ps.setInt(3, se.getId());
             ps.executeUpdate();
         } catch (Exception e) {
@@ -88,7 +88,7 @@ public class ServiciosDAO {
     }
     
     public void eliminar(int id) {
-        String sql = "delete from servicios where id=" + id;
+        String sql = "delete from servicios where id_serv=" + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

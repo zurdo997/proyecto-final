@@ -29,19 +29,19 @@
                         <form action="Controlador?menu=Clientes" method="POST">
                             <div class="form-group">
                                 <label>Dni</label>
-                                <input type="text" value="${cliente.getDni()}" name="txtDni" class="form-control">
+                                <input type="text" value="${cliente.getDni()}" style="border: 1px solid #20c997;" name="txtDni" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Nombres</label>
-                                <input type="text" value="${cliente.getNom()}" name="txtNombres" class="form-control">
+                                <input type="text" value="${cliente.getNom()}" style="border: 1px solid #20c997;" name="txtNombres" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Apellido</label>
-                                <input type="text" value="${cliente.getApe()}" name="txtApellido" class="form-control">
+                                <input type="text" value="${cliente.getApe()}" style="border: 1px solid #20c997;" name="txtApellido" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Teléfono</label>
-                                <input type="text" value="${cliente.getTel()}" name="txtTel" class="form-control">
+                                <input type="text" value="${cliente.getTel()}" style="border: 1px solid #20c997;" name="txtTel" class="form-control">
                             </div>                        
                             <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
                             <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -49,10 +49,10 @@
                     </div>                         
                 </div>
             </div>                     
-            <div class="col-sm-6">
+            <div class="col-sm-7">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-hover table-responsive text-center">
+                        <table class="table table-hover table-responsive text-center" style="margin-left: 120px">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -72,8 +72,8 @@
                                         <td>${cli.getApe()}</td>
                                         <td>${cli.getTel()}</td>                                        
                                         <td>
-                                            <a class="btn btn-warning" href="Controlador?menu=Clientes&accion=Editar&id=${cli.getId()}">Editar</a>
-                                            <a class="btn btn-danger" href="Controlador?menu=Clientes&accion=Eliminar&id=${cli.getId()}">Eliminar</a>
+                                            <a class="btn btn-warning" href="Controlador?menu=Clientes&accion=Editar&id_cliente=${cli.getId()}">Editar</a>
+                                            <a class="btn btn-danger" href="Controlador?menu=Clientes&accion=Eliminar&id_cliente=${cli.getId()}">Eliminar</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

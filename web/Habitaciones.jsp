@@ -29,27 +29,27 @@
                         <form action="Controlador?menu=Habitaciones" method="POST">
                             <div class="form-group">
                                 <label>Tipo de habitación</label>
-                                <input type="text" value="${habitacion.getTipo_hab()}" name="txtTipo" class="form-control">
+                                <input type="text" value="${habitacion.getTipo_hab()}" style="border: 1px solid #20c997;" name="txtTipo" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Cant. de camas</label>
-                                <input type="text" value="${habitacion.getCant()}" name="txtCant" class="form-control">
+                                <input type="text" value="${habitacion.getCant()}" style="border: 1px solid #20c997;" name="txtCant" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Piso</label>
-                                <input type="text" value="${habitacion.getPiso()}" name="txtPiso" class="form-control">
+                                <input type="text" value="${habitacion.getPiso()}" style="border: 1px solid #20c997;" name="txtPiso" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Número</label>
-                                <input type="text" value="${habitacion.getNumero()}" name="txtNum" class="form-control">
+                                <input type="text" value="${habitacion.getNumero()}" style="border: 1px solid #20c997;" name="txtNum" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Precio</label>
-                                <input type="text" value="${habitacion.getPrecio()}" name="txtPre" class="form-control">
+                                <input type="text" value="${habitacion.getPrecio()}" style="border: 1px solid #20c997;" name="txtPre" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Estado</label>
-                                <input type="text" value="${habitacion.getEstado()}" name="txtEstado" class="form-control">
+                                <input type="text" value="${habitacion.getEstado()}" style="border: 1px solid #20c997;" name="txtEstado" class="form-control">
                             </div>
                             <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
                             <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -84,8 +84,8 @@
                                         <td>${hab.getPrecio()}</td>
                                         <td>${hab.getEstado()}</td>
                                         <td>
-                                            <a class="btn btn-warning" href="Controlador?menu=Habitaciones&accion=Editar&id=${hab.getId()}">Editar</a>
-                                            <a class="btn btn-danger" href="Controlador?menu=Habitaciones&accion=Eliminar&id=${hab.getId()}">Eliminar</a>
+                                            <a class="btn btn-warning" href="Controlador?menu=Habitaciones&accion=Editar&id_hab=${hab.getId()}">Editar</a>
+                                            <a class="btn btn-danger" href="Controlador?menu=Habitaciones&accion=Eliminar&id_hab=${hab.getId()}">Eliminar</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

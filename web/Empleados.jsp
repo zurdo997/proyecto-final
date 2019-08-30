@@ -30,23 +30,23 @@
                     <form action="Controlador?menu=Empleados" method="POST">
                         <div class="form-group">
                             <label>Dni</label>
-                            <input type="text" value="${empleado.getDni()}" name="txtDni" class="form-control">
+                            <input type="text" value="${empleado.getDni()}" style="border: 1px solid #20c997;" name="txtDni" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Nombres</label>
-                            <input type="text" value="${empleado.getNom()}" name="txtNombre" class="form-control">
+                            <input type="text" value="${empleado.getNom()}" style="border: 1px solid #20c997;" name="txtNombre" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Apellido</label>
-                            <input type="text" value="${empleado.getApe()}" name="txtApellido" class="form-control">
+                            <input type="text" value="${empleado.getApe()}" style="border: 1px solid #20c997;" name="txtApellido" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Teléfono</label>
-                            <input type="text" value="${empleado.getTel()}" name="txtTel" class="form-control">
+                            <input type="text" value="${empleado.getTel()}" style="border: 1px solid #20c997;" name="txtTel" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Usuario</label>
-                            <input type="text" value="${empleado.getUser()}" name="txtUser" class="form-control">
+                            <input type="text" value="${empleado.getUser()}" style="border: 1px solid #20c997;" name="txtUser" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -78,8 +78,8 @@
                                         <td>${em.getTel()}</td>
                                         <td>${em.getUser()}</td>
                                         <td>
-                                            <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&id=${em.getId()}">Editar</a>
-                                            <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&id=${em.getId()}">Eliminar</a>
+                                            <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&id_empleado=${em.getId()}">Editar</a>
+                                            <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&id_empleado=${em.getId()}">Eliminar</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

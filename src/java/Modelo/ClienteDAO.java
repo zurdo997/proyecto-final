@@ -63,7 +63,7 @@ public class ClienteDAO {
     
     public Cliente listarId(int id){
         Cliente cli = new Cliente();
-        String sql = "select * from clientes where id="+id;
+        String sql = "select * from clientes where id_cliente="+id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -80,7 +80,7 @@ public class ClienteDAO {
     }
     
     public int actualizar(Cliente em){
-        String sql = "update clientes set dni=?, nombres=?, apellido=?,telefono=? where id=?";
+        String sql = "update clientes set dni=?, nombres=?, apellido=?,telefono=? where id_cliente=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -96,7 +96,7 @@ public class ClienteDAO {
     }
     
     public void eliminar(int id){
-        String sql = "delete from clientes where id="+id;
+        String sql = "delete from clientes where id_cliente="+id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

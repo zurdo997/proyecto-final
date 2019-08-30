@@ -12,13 +12,13 @@ package Modelo;
 public class Servicios {
     int id;
     String descripcion;
-    boolean disp;
+    String disp;
     
     public Servicios() {
         
     }
 
-    public Servicios(int id, String descripcion, boolean disp) {
+    public Servicios(int id, String descripcion, String disp) {
         this.id = id;
         this.descripcion = descripcion;
         this.disp = disp;
@@ -40,12 +40,11 @@ public class Servicios {
         this.descripcion = descripcion;
     }
 
-    public boolean isDisp() {
+    public String getDisp() {
         return disp;
     }
 
-    public void setDisp(boolean disp) {
+    public void setDisp(String disp) {
         this.disp = disp;
     }
-    
 }

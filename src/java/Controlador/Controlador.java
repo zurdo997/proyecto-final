@@ -11,8 +11,13 @@ import Modelo.Empleado;
 import Modelo.EmpleadoDAO;
 import Modelo.Habitaciones;
 import Modelo.HabitacionesDAO;
+import Modelo.Reserva;
+import Modelo.ReservaDAO;
+import Modelo.Servicios;
+import Modelo.ServiciosDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +29,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Desarrollo Web
  */
 public class Controlador extends HttpServlet {
+
     int contadorError = 0;
     Habitaciones hab = new Habitaciones();
     HabitacionesDAO habdao = new HabitacionesDAO();
@@ -31,9 +37,15 @@ public class Controlador extends HttpServlet {
     EmpleadoDAO emdao = new EmpleadoDAO();
     Cliente cl = new Cliente();
     ClienteDAO cldao = new ClienteDAO();
+    Servicios ser = new Servicios();
+    ServiciosDAO serdao = new ServiciosDAO();
+    Reserva res = new Reserva();
+    ReservaDAO resdao = new ReservaDAO();
     int idh;
     int ide;
     int idc;
+    int ids;
+    int idr;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -44,9 +56,9 @@ public class Controlador extends HttpServlet {
         if (menu.equals("PantallaPrincipal")) {
             request.getRequestDispatcher("PantallaPrincipal.jsp").forward(request, response);
         }
-        
+
         if (menu.equals("Registrar")) {
-            switch(accion) {
+            switch (accion) {
                 case "AgregarE":
                     String dni = request.getParameter("txtDni");
                     String nom = request.getParameter("txtNombre");
@@ -65,9 +77,9 @@ public class Controlador extends HttpServlet {
                     throw new AssertionError();
             }
         }
-        
+
         if (menu.equals("Empleados")) {
-            switch(accion) {
+            switch (accion) {
                 case "Listar":
                     List lista = emdao.listar();
                     request.setAttribute("empleados", lista);
@@ -87,7 +99,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    ide = Integer.parseInt(request.getParameter("id"));
+                    ide = Integer.parseInt(request.getParameter("id_empleado"));
                     Empleado e = emdao.listarId(ide);
                     request.setAttribute("empleado", e);
                     request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
@@ -108,7 +120,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                    ide = Integer.parseInt(request.getParameter("id"));
+                    ide = Integer.parseInt(request.getParameter("id_empleado"));
                     emdao.eliminar(ide);
                     request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
                     break;
@@ -117,7 +129,7 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
         }
-        
+
         if (menu.equals("Habitaciones")) {
             switch (accion) {
                 case "Listar":
@@ -141,7 +153,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    idh = Integer.parseInt(request.getParameter("id"));
+                    idh = Integer.parseInt(request.getParameter("id_hab"));
                     Habitaciones h = habdao.listarId(idh);
                     request.setAttribute("habitacion", h);
                     request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
@@ -164,7 +176,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                    idh = Integer.parseInt(request.getParameter("id"));
+                    idh = Integer.parseInt(request.getParameter("id_hab"));
                     habdao.eliminar(idh);
                     request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
                     break;
@@ -173,7 +185,7 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("Habitaciones.jsp").forward(request, response);
         }
-        
+
         if (menu.equals("Clientes")) {
             switch (accion) {
                 case "Listar":
@@ -193,7 +205,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    idc = Integer.parseInt(request.getParameter("id"));
+                    idc = Integer.parseInt(request.getParameter("id_cliente"));
                     Cliente c = cldao.listarId(idc);
                     request.setAttribute("cliente", c);
                     request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
@@ -212,7 +224,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                    idc = Integer.parseInt(request.getParameter("id"));
+                    idc = Integer.parseInt(request.getParameter("id_cliente"));
                     cldao.eliminar(idc);
                     request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
                     break;
@@ -220,6 +232,98 @@ public class Controlador extends HttpServlet {
                     throw new AssertionError();
             }
             request.getRequestDispatcher("Clientes.jsp").forward(request, response);
+        }
+        
+        if (menu.equals("Contacto")) {
+            request.getRequestDispatcher("Contacto.jsp").forward(request, response);
+        }
+        
+        if (menu.equals("Reservas")) {
+            switch (accion) {
+                case "Listar":
+                    List lista = resdao.listar();
+                    request.setAttribute("reservas", lista);
+                    break;
+                case "Agregar":
+                    Date fecha = java.util.Date.parse(request.getParameter(""));
+                    String nom = request.getParameter("txtNombres");
+                    String ape = request.getParameter("txtApellido");
+                    String tel = request.getParameter("txtTel");
+                    cl.setDni(dni);
+                    cl.setNom(nom);
+                    cl.setApe(ape);
+                    cl.setTel(tel);
+                    cldao.agregar(cl);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    idc = Integer.parseInt(request.getParameter("id_cliente"));
+                    Cliente c = cldao.listarId(idc);
+                    request.setAttribute("cliente", c);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    break;
+                case "Actualizar":
+                    String dni1 = request.getParameter("txtDni");
+                    String nom1 = request.getParameter("txtNombres");
+                    String ape1 = request.getParameter("txtApellido");
+                    String tel1 = request.getParameter("txtTel");
+                    cl.setDni(dni1);
+                    cl.setNom(nom1);
+                    cl.setApe(ape1);
+                    cl.setTel(tel1);
+                    cl.setId(idc);
+                    cldao.actualizar(cl);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    break;
+                case "Eliminar":
+                    idc = Integer.parseInt(request.getParameter("id_cliente"));
+                    cldao.eliminar(idc);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            request.getRequestDispatcher("Clientes.jsp").forward(request, response);
+        }
+        
+        if (menu.equals("Servicios")) {
+            switch (accion) {
+                case "Listar":
+                    List lista = serdao.listar();
+                    request.setAttribute("servicios", lista);
+                    break;
+                case "Agregar":
+                    String desc = request.getParameter("txtDesc");
+                    String disp = request.getParameter("txtDisp");
+                    ser.setDescripcion(desc);
+                    ser.setDisp(disp);
+                    serdao.agregar(ser);
+                    request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    ids = Integer.parseInt(request.getParameter("id_serv"));
+                    Servicios s = serdao.listarId(ids);
+                    request.setAttribute("servicio", s);
+                    request.getRequestDispatcher("Controlador?menu=Serivicios&accion=Listar").forward(request, response);
+                    break;
+                case "Actualizar":
+                    String desc2 = request.getParameter("txtDesc");
+                    String disp2 = request.getParameter("txtDisp");
+                    ser.setDescripcion(desc2);
+                    ser.setDisp(disp2);
+                    ser.setId(ids);
+                    serdao.actualizar(ser);
+                    request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
+                    break;
+                case "Eliminar":
+                    ids = Integer.parseInt(request.getParameter("id_serv"));
+                    serdao.eliminar(ids);
+                    request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            request.getRequestDispatcher("Servicios.jsp").forward(request, response);
         }
     }
 

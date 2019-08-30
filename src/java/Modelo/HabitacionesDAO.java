@@ -49,7 +49,7 @@ public class HabitacionesDAO {
     
     public Habitaciones listarId(int id) {
         Habitaciones hab = new Habitaciones();
-        String sql = "select * from habitaciones where id=" + id;
+        String sql = "select * from habitaciones where id_hab=" + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -86,7 +86,7 @@ public class HabitacionesDAO {
     }
     
     public int actualizar(Habitaciones hbt) {
-        String sql = "update habitaciones set tipo=?, cant_camas=?, piso=?, numero=?, precio=?, estado=? where id=?";
+        String sql = "update habitaciones set tipo=?, cant_camas=?, piso=?, numero=?, precio=?, estado=? where id_hab=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -104,7 +104,7 @@ public class HabitacionesDAO {
     }
     
     public void eliminar(int id) {
-        String sql = "delete from habitaciones where id=" + id;
+        String sql = "delete from habitaciones where id_hab=" + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

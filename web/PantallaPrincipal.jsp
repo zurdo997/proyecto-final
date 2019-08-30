@@ -101,10 +101,10 @@
             <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" href="PantallaPrincipal.jsp">Home</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow1' href="Servicios.jsp" target="myFrame">Servicios</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow1' href="Controlador?menu=Servicios&accion=Listar" target="myFrame">Servicios</a>
                     </li>
                     <li class="nav-item">
                         <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow2' href="Controlador?menu=Empleados&accion=Listar" target="myFrame">Empleados</a>
@@ -116,10 +116,10 @@
                         <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow4' href="Controlador?menu=Clientes&accion=Listar" target="myFrame">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow5' href="Reservas.jsp" target="myFrame">Reservas</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow5' href="Controlador?menu=Reservas&accion=Listar" target="myFrame">Reservas</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow6' href="Contacto.jsp" target="myFrame">Contacto</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow6' href="Controlador?menu=Contacto" target="myFrame">Contacto</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right ml-auto">

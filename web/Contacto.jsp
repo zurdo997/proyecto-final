@@ -18,10 +18,16 @@
                 height: 120px;
                 padding-top: 20px;
                 margin-bottom: 40px;
-                color: #bd0042;
+                color: #4938ff;
             }
             .card {
                 border: none;
+            }
+            .col-sm-4 {
+                height: 225px;
+            }
+            a {
+                color: #4938ff;
             }
         </style>
     </head>
@@ -33,19 +39,19 @@
                         <form>
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" name="txtNombre" value="" placeholder="Nombre">
+                                <input type="text" class="form-control" style="border: 1px solid #20c997;" name="txtNombre" value="" placeholder="Nombre">
                             </div>
                             <div class="form-group">
                                 <label>Apellido</label>
-                                <input type="text" class="form-control" name="txtApellido" value="" placeholder="Apellido">
+                                <input type="text" class="form-control" style="border: 1px solid #20c997;" name="txtApellido" value="" placeholder="Apellido">
                             </div>
                             <div class="form-group">
                                 <label>Teléfono</label>
-                                <input type="text" class="form-control" name="txtTel" value="" placeholder="Teléfono">
+                                <input type="text" class="form-control" style="border: 1px solid #20c997;" name="txtTel" value="" placeholder="Teléfono">
                             </div>
                             <div class="form-group">
                                 <label>Consulta</label>
-                                <select class="form-control" name="frmRemitente">
+                                <select class="form-control" style="border: 1px solid #20c997;" name="frmRemitente">
                                     <option value="">Seleccionar</option>
                                     <option value="ConsultasGenerales">Consultas Generales</option>
                                     <option value="Reservas">Reservas</option>
@@ -55,7 +61,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Mensaje</label>
-                                <textarea class="form-control" rows="4" name="txtMens"></textarea>
+                                <textarea class="form-control" style="border: 1px solid #20c997;" rows="4" name="txtMens"></textarea>
                             </div>
                             <div>
                                 <button type="submit" name="Enviar" class="btn btn-info">ENVIAR</button>
@@ -103,6 +109,14 @@
                         <p><strong>Ricardo Lopez</strong><br>
                         <a href="mailto:concerjeria@hotel.com.ar">concerjeria@hotel.com.ar</a><br>
                             Tel: 54.11.4808.2927 </p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="item">
+                        <h3>Business Center</h3>
+                        <p><strong>Carlos Alberto</strong><br>
+                        <a href="mailto:businesscenter@hotel.com.ar">businesscenter@hotel.com.ar</a><br>
+                            Tel: 54.11.4808.2160 </p>
                     </div>
                 </div>
             </div>

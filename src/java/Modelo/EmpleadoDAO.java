@@ -33,7 +33,7 @@ public class EmpleadoDAO {
             ps.setString(2, dni);
             rs = ps.executeQuery();
             while (rs.next()) {
-                em.setId(rs.getInt("id"));
+                em.setId(rs.getInt("id_empleado"));
                 em.setUser(rs.getString("user"));
                 em.setDni(rs.getString("dni"));
                 em.setNom(rs.getString("nombres"));
@@ -87,7 +87,7 @@ public class EmpleadoDAO {
     
     public Empleado listarId(int id){
         Empleado emp = new Empleado();
-        String sql="select * from empleado where id="+id;
+        String sql="select * from empleado where id_empleado="+id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -105,7 +105,7 @@ public class EmpleadoDAO {
     }
     
     public int actualizar(Empleado em){
-        String sql="update empleado set dni=?, nombres=?, apellido=?, telefono=?,user=? where id=?";
+        String sql="update empleado set dni=?, nombres=?, apellido=?, telefono=?,user=? where id_empleado=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -122,7 +122,7 @@ public class EmpleadoDAO {
     }
     
     public void eliminar(int id){
-        String sql = "delete from empleado where id="+id;
+        String sql = "delete from empleado where id_empleado="+id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
