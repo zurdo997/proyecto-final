@@ -36,35 +36,30 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <form>
+                        <form action="Controlador?menu=Contacto" method="POST">
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" style="border: 1px solid #20c997;" name="txtNombre" value="" placeholder="Nombre">
+                                <input type="text" class="form-control" style="border: 1px solid #20c997;" name="txtNombre" placeholder="Nombre">
                             </div>
                             <div class="form-group">
                                 <label>Apellido</label>
-                                <input type="text" class="form-control" style="border: 1px solid #20c997;" name="txtApellido" value="" placeholder="Apellido">
+                                <input type="text" class="form-control" style="border: 1px solid #20c997;" name="txtApellido" placeholder="Apellido">
                             </div>
                             <div class="form-group">
                                 <label>Teléfono</label>
-                                <input type="text" class="form-control" style="border: 1px solid #20c997;" name="txtTel" value="" placeholder="Teléfono">
+                                <input type="text" class="form-control" style="border: 1px solid #20c997;" name="txtTel" placeholder="Teléfono">
                             </div>
                             <div class="form-group">
-                                <label>Consulta</label>
-                                <select class="form-control" style="border: 1px solid #20c997;" name="frmRemitente">
-                                    <option value="">Seleccionar</option>
-                                    <option value="ConsultasGenerales">Consultas Generales</option>
-                                    <option value="Reservas">Reservas</option>
-                                    <option value="Administración">Administración</option>
-                                    <option value="Otros">Otros</option>
-                                </select>
+                                <label>Asunto</label>
+                                <input type="text" class="form-control" style="border: 1px solid #20c997;" name="txtAsunto" placeholder="Asunto">
                             </div>
                             <div class="form-group">
                                 <label>Mensaje</label>
                                 <textarea class="form-control" style="border: 1px solid #20c997;" rows="4" name="txtMens"></textarea>
                             </div>
                             <div>
-                                <button type="submit" name="Enviar" class="btn btn-info">ENVIAR</button>
+                                <input type="submit" name="accion" value="Enviar" class="btn btn-primary">
+                                <label style="color: #4938ff"><strong>   ${mensaje}</strong></label>
                             </div>
                         </form>
                     </div>
@@ -91,7 +86,7 @@
                     <div class="item">
                         <h3>Gerente de Banquetes & Convenciones</h3>
                         <p><strong>Alfredo Rodriguez</strong><br>
-                        <a href="mailto:banquetes@hotel.com.ar">banquetes@hotel.com.ar</a><br>
+                            <a href="mailto:banquetes@hotel.com.ar">banquetes@hotel.com.ar</a><br>
                             Tel: 54.11.4808.2187</p>
                     </div>
                 </div>
@@ -99,7 +94,7 @@
                     <div class="item">
                         <h3>Restaurant</h3>
                         <p><strong>Santiago Perez</strong><br>
-                        <a href="mailto:restaurantes@hotel.com.ar">restaurantes@hotel.com.ar</a><br>
+                            <a href="mailto:restaurantes@hotel.com.ar">restaurantes@hotel.com.ar</a><br>
                             Tel: 54.11.4808.2187</p>
                     </div>
                 </div>
@@ -107,7 +102,7 @@
                     <div class="item">
                         <h3>Conserjería</h3>
                         <p><strong>Ricardo Lopez</strong><br>
-                        <a href="mailto:concerjeria@hotel.com.ar">concerjeria@hotel.com.ar</a><br>
+                            <a href="mailto:concerjeria@hotel.com.ar">concerjeria@hotel.com.ar</a><br>
                             Tel: 54.11.4808.2927 </p>
                     </div>
                 </div>
@@ -115,12 +110,12 @@
                     <div class="item">
                         <h3>Business Center</h3>
                         <p><strong>Carlos Alberto</strong><br>
-                        <a href="mailto:businesscenter@hotel.com.ar">businesscenter@hotel.com.ar</a><br>
+                            <a href="mailto:businesscenter@hotel.com.ar">businesscenter@hotel.com.ar</a><br>
                             Tel: 54.11.4808.2160 </p>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </body>
 </html>

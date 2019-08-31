@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-08-2019 a las 23:33:46
+-- Tiempo de generación: 01-09-2019 a las 00:12:50
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -43,6 +43,29 @@ CREATE TABLE `clientes` (
 INSERT INTO `clientes` (`id_cliente`, `dni`, `nombres`, `apellido`, `telefono`) VALUES
 (1, '12345', 'luisss', 'suarez', '12346'),
 (3, '54321', 'paulo', 'dybala', '1213543');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contacto`
+--
+
+CREATE TABLE `contacto` (
+  `id_contacto` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `apellido` varchar(30) NOT NULL,
+  `telefono` varchar(15) NOT NULL,
+  `asunto` varchar(30) NOT NULL,
+  `mensaje` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `contacto`
+--
+
+INSERT INTO `contacto` (`id_contacto`, `nombre`, `apellido`, `telefono`, `asunto`, `mensaje`) VALUES
+(1, 'alan', 'franco', '1234556', 'Reservas', 'la seccion reservas de la pagina web no funciona'),
+(2, 'alan', 'franco', '13558688', 'calefaccion', 'en la habitacion 55 no funciona la calefaccion');
 
 -- --------------------------------------------------------
 
@@ -100,32 +123,45 @@ INSERT INTO `habitaciones` (`id_hab`, `tipo`, `cant_camas`, `piso`, `numero`, `p
 
 CREATE TABLE `reservas` (
   `id_reservas` int(11) NOT NULL,
-  `entrada` date NOT NULL,
-  `salida` date NOT NULL,
+  `entrada` varchar(15) NOT NULL,
+  `salida` varchar(20) NOT NULL,
   `cant_hab` int(10) NOT NULL,
   `adultos` int(10) NOT NULL,
   `niños` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `reservas`
+--
+
+INSERT INTO `reservas` (`id_reservas`, `entrada`, `salida`, `cant_hab`, `adultos`, `niños`) VALUES
+(2, '2019-09-02', '2019-09-10', 2, 2, 2),
+(3, '2019-09-10', '2019-09-18', 2, 2, 3);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `servicios`
+-- Estructura de tabla para la tabla `servicio`
 --
 
-CREATE TABLE `servicios` (
+CREATE TABLE `servicio` (
   `id_serv` int(11) NOT NULL,
-  `descripcion` varchar(20) NOT NULL,
-  `disponible` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `descripcion` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  `disponible` varchar(15) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `servicios`
+-- Volcado de datos para la tabla `servicio`
 --
 
-INSERT INTO `servicios` (`id_serv`, `descripcion`, `disponible`) VALUES
-(1, 'WI-FI', 'disponible'),
-(2, 'Mayordomo', 'no disponible');
+INSERT INTO `servicio` (`id_serv`, `descripcion`, `disponible`) VALUES
+(1, 'Calefacción', 'no disponible'),
+(2, 'Mayordomo', 'no disponible'),
+(3, 'Piscina', 'disponible'),
+(4, 'WI-FI', 'disponible'),
+(5, 'Aire acondicionado', 'disponible'),
+(6, 'Alquiler de coches', 'no disponible'),
+(7, 'Salas de reuniÃ³n', 'no disponible');
 
 --
 -- Índices para tablas volcadas
@@ -136,6 +172,12 @@ INSERT INTO `servicios` (`id_serv`, `descripcion`, `disponible`) VALUES
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id_cliente`);
+
+--
+-- Indices de la tabla `contacto`
+--
+ALTER TABLE `contacto`
+  ADD PRIMARY KEY (`id_contacto`);
 
 --
 -- Indices de la tabla `empleado`
@@ -156,9 +198,9 @@ ALTER TABLE `reservas`
   ADD PRIMARY KEY (`id_reservas`);
 
 --
--- Indices de la tabla `servicios`
+-- Indices de la tabla `servicio`
 --
-ALTER TABLE `servicios`
+ALTER TABLE `servicio`
   ADD PRIMARY KEY (`id_serv`);
 
 --
@@ -170,6 +212,12 @@ ALTER TABLE `servicios`
 --
 ALTER TABLE `clientes`
   MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `contacto`
+--
+ALTER TABLE `contacto`
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `empleado`
@@ -187,13 +235,13 @@ ALTER TABLE `habitaciones`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id_reservas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_reservas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `servicios`
+-- AUTO_INCREMENT de la tabla `servicio`
 --
-ALTER TABLE `servicios`
-  MODIFY `id_serv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `servicio`
+  MODIFY `id_serv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

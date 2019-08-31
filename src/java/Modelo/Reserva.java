@@ -5,17 +5,14 @@
  */
 package Modelo;
 
-import java.sql.Date;
-
 /**
  *
  * @author Alan97
  */
 public class Reserva {
     int id;
-    //DateFormat format = new SimpleDateFormat("DD/MM/YYYY"); //Formato de fecha
-    Date fecha;
-    Date fecha2;
+    String fecha;
+    String fecha2;
     int cantHab;
     int adultos;
     int ninios;
@@ -24,7 +21,7 @@ public class Reserva {
         
     }
 
-    public Reserva(int id, Date fecha, Date fecha2, int cantHab, int adultos, int ninios) {
+    public Reserva(int id, String fecha, String fecha2, int cantHab, int adultos, int ninios) {
         this.id = id;
         this.fecha = fecha;
         this.fecha2 = fecha2;
@@ -41,19 +38,19 @@ public class Reserva {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public Date getFecha2() {
+    public String getFecha2() {
         return fecha2;
     }
 
-    public void setFecha2(Date fecha2) {
+    public void setFecha2(String fecha2) {
         this.fecha2 = fecha2;
     }
 

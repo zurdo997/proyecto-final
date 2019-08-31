@@ -18,81 +18,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <style>
-            .nav-bk{
-                background: #00F260;  
-                background: -webkit-linear-gradient(to right, #0575E6, #00F260);  
-                background: linear-gradient(to right, #0575E6, #00F260); 
-
-            }
-            .carousel-item {
-                height: 100vh;
-                min-height: 350px;
-                background: no-repeat center center scroll;
-                -webkit-background-size: cover;
-                -moz-background-size: cover;
-                -o-background-size: cover;
-                background-size: cover;
-            }
-            footer{
-                background-color: #292c2f;
-                box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-                width: 100%;
-                text-align: left;
-                font: normal 16px sans-serif;
-
-                padding: 45px 50px;
-            }
-
-            footer .footer-limiter {
-                max-width: 880px;
-                margin: 0 auto;
-            }
-
-            footer .footer-left p{
-                color:  #8f9296;
-                font-size: 14px;
-                margin: 0;
-            }
-
-            /* Footer links */
-
-            footer p.footer-links{
-                font-size:18px;
-                font-weight: bold;
-                color:  #ffffff;
-                margin: 0 0 10px;
-                padding: 0;
-            }
-
-            footer p.footer-links a{
-                display:inline-block;
-                line-height: 1.8;
-                text-decoration: none;
-                color:  inherit;
-            }
-
-            footer .footer-right{
-                float: right;
-                margin-top: 6px;
-                max-width: 180px;
-            }
-
-            footer .footer-right a{
-                display: inline-block;
-                width: 35px;
-                height: 35px;
-                background-color:  #33383b;
-                border-radius: 2px;
-
-                font-size: 20px;
-                color: #ffffff;
-                text-align: center;
-                line-height: 35px;
-
-                margin-left: 3px;
-            }
-        </style>
+        <link href="estilosPPrincipal.css" rel="stylesheet" type="text/css"/>
         <title>Pantalla Principal</title>
     </head>
     <body style="font-family: 'Nunito', sans-serif">
@@ -119,7 +45,7 @@
                         <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow5' href="Controlador?menu=Reservas&accion=Listar" target="myFrame">Reservas</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow6' href="Controlador?menu=Contacto" target="myFrame">Contacto</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow6' href="Controlador?menu=Contacto&accion=default" target="myFrame">Contacto</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right ml-auto">

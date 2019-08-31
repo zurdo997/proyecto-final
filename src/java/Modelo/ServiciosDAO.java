@@ -25,7 +25,7 @@ public class ServiciosDAO {
     
     //*****Operaciones CRUD*****//
     public List listar() {
-        String sql = "select * from servicios";
+        String sql = "select * from servicio";
         List<Servicios> lista = new ArrayList<>();
         try {
             con = cn.Conexion();
@@ -45,7 +45,7 @@ public class ServiciosDAO {
     
     public Servicios listarId(int id) {
         Servicios ser = new Servicios();
-        String sql = "select * from servicios where id_serv=" + id;
+        String sql = "select * from servicio where id_serv=" + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -61,7 +61,7 @@ public class ServiciosDAO {
     }
     
     public int agregar(Servicios s) {
-        String sql = "insert into servicios(descripcion,disponible)values(?,?)";
+        String sql = "insert into servicio(descripcion,disponible)values(?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -74,7 +74,7 @@ public class ServiciosDAO {
     }
     
     public int actualizar(Servicios se) {
-        String sql = "update servicios set descripcion=?, disponible=? where id_serv=?";
+        String sql = "update servicio set descripcion=?, disponible=? where id_serv=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -88,7 +88,7 @@ public class ServiciosDAO {
     }
     
     public void eliminar(int id) {
-        String sql = "delete from servicios where id_serv=" + id;
+        String sql = "delete from servicio where id_serv=" + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

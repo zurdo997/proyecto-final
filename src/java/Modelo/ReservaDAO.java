@@ -34,8 +34,8 @@ public class ReservaDAO {
             while (rs.next()) {
                 Reserva res = new Reserva();
                 res.setId(rs.getInt(1));
-                res.setFecha(rs.getDate(2));
-                res.setFecha2(rs.getDate(3));
+                res.setFecha(rs.getString(2));
+                res.setFecha2(rs.getString(3));
                 res.setCantHab(rs.getInt(4));
                 res.setAdultos(rs.getInt(5));
                 res.setNinios(rs.getInt(6));
@@ -55,8 +55,8 @@ public class ReservaDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 res.setId(rs.getInt(1));
-                res.setFecha(rs.getDate(2));
-                res.setFecha2(rs.getDate(3));
+                res.setFecha(rs.getString(2));
+                res.setFecha2(rs.getString(3));
                 res.setCantHab(rs.getInt(4));
                 res.setAdultos(rs.getInt(5));
                 res.setNinios(rs.getInt(6));
@@ -71,8 +71,8 @@ public class ReservaDAO {
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setDate(1, r.getFecha());
-            ps.setDate(2, r.getFecha2());
+            ps.setString(1, r.getFecha());
+            ps.setString(2, r.getFecha2());
             ps.setInt(3, r.getCantHab());
             ps.setInt(4, r.getAdultos());
             ps.setInt(5, r.getNinios());
@@ -87,12 +87,12 @@ public class ReservaDAO {
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setDate(1, rsv.getFecha());
-            ps.setDate(1, rsv.getFecha());
-            ps.setInt(2, rsv.getCantHab());
-            ps.setInt(3, rsv.getAdultos());
-            ps.setInt(4, rsv.getNinios());
-            ps.setInt(7, rsv.getId());
+            ps.setString(1, rsv.getFecha());
+            ps.setString(2, rsv.getFecha2());
+            ps.setInt(3, rsv.getCantHab());
+            ps.setInt(4, rsv.getAdultos());
+            ps.setInt(5, rsv.getNinios());
+            ps.setInt(6, rsv.getId());
             ps.executeUpdate();
         } catch (Exception e) {
         }

@@ -7,6 +7,8 @@ package Controlador;
 
 import Modelo.Cliente;
 import Modelo.ClienteDAO;
+import Modelo.Contacto;
+import Modelo.ContactoDAO;
 import Modelo.Empleado;
 import Modelo.EmpleadoDAO;
 import Modelo.Habitaciones;
@@ -41,6 +43,8 @@ public class Controlador extends HttpServlet {
     ServiciosDAO serdao = new ServiciosDAO();
     Reserva res = new Reserva();
     ReservaDAO resdao = new ReservaDAO();
+    Contacto cont = new Contacto();
+    ContactoDAO contdao = new ContactoDAO();
     int idh;
     int ide;
     int idc;
@@ -73,8 +77,6 @@ public class Controlador extends HttpServlet {
                     emdao.agregar(em);
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     break;
-                default:
-                    throw new AssertionError();
             }
         }
 
@@ -124,8 +126,6 @@ public class Controlador extends HttpServlet {
                     emdao.eliminar(ide);
                     request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
                     break;
-                default:
-                    throw new AssertionError();
             }
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
         }
@@ -180,8 +180,6 @@ public class Controlador extends HttpServlet {
                     habdao.eliminar(idh);
                     request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
                     break;
-                default:
-                    throw new AssertionError();
             }
             request.getRequestDispatcher("Habitaciones.jsp").forward(request, response);
         }
@@ -228,13 +226,28 @@ public class Controlador extends HttpServlet {
                     cldao.eliminar(idc);
                     request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
                     break;
-                default:
-                    throw new AssertionError();
             }
             request.getRequestDispatcher("Clientes.jsp").forward(request, response);
         }
         
         if (menu.equals("Contacto")) {
+            switch(accion) {
+                case "Enviar":
+                    String nom = request.getParameter("txtNombre");
+                    String ape = request.getParameter("txtApellido");
+                    String tel = request.getParameter("txtTel");
+                    String asun = request.getParameter("txtAsunto");
+                    String msj = request.getParameter("txtMens");
+                    cont.setNom(nom);
+                    cont.setApe(ape);
+                    cont.setTel(tel);
+                    cont.setAsunto(asun);
+                    cont.setMsj(msj);
+                    contdao.agregar(cont);
+                    request.setAttribute("mensaje", "Mensaje enviado correctamente");
+                    request.getRequestDispatcher("Contacto.jsp").forward(request, response);
+                    break;
+            }
             request.getRequestDispatcher("Contacto.jsp").forward(request, response);
         }
         
@@ -245,45 +258,48 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("reservas", lista);
                     break;
                 case "Agregar":
-                    Date fecha = java.util.Date.parse(request.getParameter(""));
-                    String nom = request.getParameter("txtNombres");
-                    String ape = request.getParameter("txtApellido");
-                    String tel = request.getParameter("txtTel");
-                    cl.setDni(dni);
-                    cl.setNom(nom);
-                    cl.setApe(ape);
-                    cl.setTel(tel);
-                    cldao.agregar(cl);
-                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    String fecha = request.getParameter("fechaE");
+                    String fecha2 = request.getParameter("fechaS");
+                    int cantH = Integer.parseInt(request.getParameter("cantH"));
+                    int cantA = Integer.parseInt(request.getParameter("adultos"));
+                    int cantN = Integer.parseInt(request.getParameter("ninios"));
+                    res.setFecha(fecha);
+                    res.setFecha2(fecha2);
+                    res.setCantHab(cantH);
+                    res .setAdultos(cantA);
+                    res .setNinios(cantN);
+                    resdao.agregar(res);
+                    request.getRequestDispatcher("Controlador?menu=Reservas&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    idc = Integer.parseInt(request.getParameter("id_cliente"));
-                    Cliente c = cldao.listarId(idc);
-                    request.setAttribute("cliente", c);
-                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    idr = Integer.parseInt(request.getParameter("id_reservas"));
+                    Reserva r = resdao.listarId(idr);
+                    request.setAttribute("reserva", r);
+                    request.getRequestDispatcher("Controlador?menu=Reservas&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    String dni1 = request.getParameter("txtDni");
-                    String nom1 = request.getParameter("txtNombres");
-                    String ape1 = request.getParameter("txtApellido");
-                    String tel1 = request.getParameter("txtTel");
-                    cl.setDni(dni1);
-                    cl.setNom(nom1);
-                    cl.setApe(ape1);
-                    cl.setTel(tel1);
-                    cl.setId(idc);
-                    cldao.actualizar(cl);
-                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    String fechados = request.getParameter("fechaE");
+                    String fecha2dos = request.getParameter("fechaS");
+                    int cantH2 = Integer.parseInt(request.getParameter("cantH"));
+                    int cantA2 = Integer.parseInt(request.getParameter("adultos"));
+                    int cantN2 = Integer.parseInt(request.getParameter("ninios"));
+                    res.setFecha(fechados);
+                    res.setFecha2(fecha2dos);
+                    res.setCantHab(cantH2);
+                    res .setAdultos(cantA2);
+                    res .setNinios(cantN2);
+                    res.setId(idr);
+                    resdao.actualizar(res);
+                    request.getRequestDispatcher("Controlador?menu=Reservas&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                    idc = Integer.parseInt(request.getParameter("id_cliente"));
-                    cldao.eliminar(idc);
-                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    idr = Integer.parseInt(request.getParameter("id_reservas"));
+                    resdao.eliminar(idr);
+                    request.getRequestDispatcher("Controlador?menu=Reservas&accion=Listar").forward(request, response);
                     break;
-                default:
-                    throw new AssertionError();
+
             }
-            request.getRequestDispatcher("Clientes.jsp").forward(request, response);
+            request.getRequestDispatcher("Reservas.jsp").forward(request, response);
         }
         
         if (menu.equals("Servicios")) {
@@ -304,7 +320,7 @@ public class Controlador extends HttpServlet {
                     ids = Integer.parseInt(request.getParameter("id_serv"));
                     Servicios s = serdao.listarId(ids);
                     request.setAttribute("servicio", s);
-                    request.getRequestDispatcher("Controlador?menu=Serivicios&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
                     String desc2 = request.getParameter("txtDesc");
@@ -320,8 +336,6 @@ public class Controlador extends HttpServlet {
                     serdao.eliminar(ids);
                     request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
                     break;
-                default:
-                    throw new AssertionError();
             }
             request.getRequestDispatcher("Servicios.jsp").forward(request, response);
         }
