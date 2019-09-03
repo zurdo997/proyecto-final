@@ -42,7 +42,7 @@
                         <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow4' href="Controlador?menu=Clientes&accion=Listar" target="myFrame">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow5' href="Controlador?menu=Reservas&accion=Listar" target="myFrame">Reservas</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow5' href="Controlador?menu=NuevaReserva&accion=default" target="myFrame">Reservas</a>
                     </li>
                     <li class="nav-item">
                         <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow6' href="Controlador?menu=Contacto&accion=default" target="myFrame">Contacto</a>

@@ -23,6 +23,25 @@ public class ClienteDAO {
     ResultSet rs;
     int r;
     
+    public Cliente buscar(String dni){
+        Cliente c = new Cliente();
+        String sql="Select * from clientes where dni="+dni;
+        try {
+            con=cn.Conexion();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while (rs.next()) {
+                c.setId(rs.getInt(1));
+                c.setDni(rs.getString(2));
+                c.setNom(rs.getString(3));
+                c.setApe(rs.getString(4));                
+                c.setTel(rs.getString(5));                
+            }
+        } catch (Exception e) {
+        }
+        return c;
+    }
+    
     //*******Operaciones CRUD***************//
     public List listar(){
         String sql = "select * from clientes";

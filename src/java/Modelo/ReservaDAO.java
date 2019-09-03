@@ -23,89 +23,50 @@ public class ReservaDAO {
     ResultSet rs;
     int a;
     
-    //*****Operaciones CRUD*****//
-    public List listar() {
-        String sql = "select * from reservas";
-        List <Reserva> lista = new ArrayList<>();
+    public String IdReservas(){
+        String idreservas="";
+        String sql="select max(id_reservas) from reservas";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Reserva res = new Reserva();
-                res.setId(rs.getInt(1));
-                res.setFecha(rs.getString(2));
-                res.setFecha2(rs.getString(3));
-                res.setCantHab(rs.getInt(4));
-                res.setAdultos(rs.getInt(5));
-                res.setNinios(rs.getInt(6));
-                lista.add(res);
+                idreservas=rs.getString(1);
             }
         } catch (Exception e) {
         }
-        return lista;
+        return idreservas;
     }
     
-    public Reserva listarId(int id) {
-        Reserva res = new Reserva();
-        String sql = "select * from reservas where id_reservas=" + id;
+    public int guardarReserva(Reserva r) {
+        String sql = "insert into reservas(id_cliente, id_empleado, entrada, salida, cant_hab, monto)values(?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                res.setId(rs.getInt(1));
-                res.setFecha(rs.getString(2));
-                res.setFecha2(rs.getString(3));
-                res.setCantHab(rs.getInt(4));
-                res.setAdultos(rs.getInt(5));
-                res.setNinios(rs.getInt(6));
-            }
-        } catch (Exception e) {
-        }
-        return res;
-    }
-    
-    public int agregar(Reserva r) {
-        String sql = "insert into reservas(entrada, salida, cant_hab, adultos, niños)values(?,?,?,?,?)";
-        try {
-            con = cn.Conexion();
-            ps = con.prepareStatement(sql);
-            ps.setString(1, r.getFecha());
-            ps.setString(2, r.getFecha2());
-            ps.setInt(3, r.getCantHab());
-            ps.setInt(4, r.getAdultos());
-            ps.setInt(5, r.getNinios());
+            ps.setInt(1, r.getIdcliente());
+            ps.setInt(2, r.getIdempleado());
+            ps.setString(3, r.getFecha());
+            ps.setString(4, r.getFecha2());
+            ps.setInt(5, r.getCantHab());
+            ps.setDouble(6, r.getMonto());
             ps.executeUpdate();
         } catch (Exception e) {
         }
         return a;
     }
     
-    public int actualizar(Reserva rsv) {
-        String sql = "update reservas set entrada=?, salida=?, cant_hab=?, adultos=?, niños=? where id_reservas=?";
+    public int guardarDetalleReservas(Reserva res){
+        String sql="insert into detalle_reservas(id_reservas, id_hab,cant_hab,precio_res)values(?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, rsv.getFecha());
-            ps.setString(2, rsv.getFecha2());
-            ps.setInt(3, rsv.getCantHab());
-            ps.setInt(4, rsv.getAdultos());
-            ps.setInt(5, rsv.getNinios());
-            ps.setInt(6, rsv.getId());
+            ps.setInt(1, res.getId());
+            ps.setInt(2, res.getIdhabitacion());
+            ps.setInt(3, res.getCantHab());
+            ps.setDouble(4, res.getPrecio());
             ps.executeUpdate();
         } catch (Exception e) {
         }
         return a;
-    }
-    
-    public void eliminar(int id) {
-        String sql = "delete from reservas where id_reservas=" + id;
-        try {
-            con = cn.Conexion();
-            ps = con.prepareStatement(sql);
-            ps.executeUpdate();
-        } catch (Exception e) {
-        }
     }
 }

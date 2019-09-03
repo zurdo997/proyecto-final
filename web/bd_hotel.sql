@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-09-2019 a las 00:12:50
+-- Tiempo de generación: 03-09-2019 a las 02:11:47
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -70,6 +70,28 @@ INSERT INTO `contacto` (`id_contacto`, `nombre`, `apellido`, `telefono`, `asunto
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `detalle_reservas`
+--
+
+CREATE TABLE `detalle_reservas` (
+  `id_detalle` int(11) NOT NULL,
+  `id_reservas` int(11) NOT NULL,
+  `id_hab` int(11) NOT NULL,
+  `cant_hab` int(11) NOT NULL,
+  `precio_res` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `detalle_reservas`
+--
+
+INSERT INTO `detalle_reservas` (`id_detalle`, `id_reservas`, `id_hab`, `cant_hab`, `precio_res`) VALUES
+(1, 3, 3, 1, 500),
+(2, 3, 3, 2, 500);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `empleado`
 --
 
@@ -123,20 +145,21 @@ INSERT INTO `habitaciones` (`id_hab`, `tipo`, `cant_camas`, `piso`, `numero`, `p
 
 CREATE TABLE `reservas` (
   `id_reservas` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `id_empleado` int(11) NOT NULL,
   `entrada` varchar(15) NOT NULL,
   `salida` varchar(20) NOT NULL,
   `cant_hab` int(10) NOT NULL,
-  `adultos` int(10) NOT NULL,
-  `niños` int(10) NOT NULL
+  `monto` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `reservas`
 --
 
-INSERT INTO `reservas` (`id_reservas`, `entrada`, `salida`, `cant_hab`, `adultos`, `niños`) VALUES
-(2, '2019-09-02', '2019-09-10', 2, 2, 2),
-(3, '2019-09-10', '2019-09-18', 2, 2, 3);
+INSERT INTO `reservas` (`id_reservas`, `id_cliente`, `id_empleado`, `entrada`, `salida`, `cant_hab`, `monto`) VALUES
+(2, 0, 0, '2019-09-02', '2019-09-10', 2, 0),
+(3, 0, 0, '2019-09-10', '2019-09-18', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -180,6 +203,12 @@ ALTER TABLE `contacto`
   ADD PRIMARY KEY (`id_contacto`);
 
 --
+-- Indices de la tabla `detalle_reservas`
+--
+ALTER TABLE `detalle_reservas`
+  ADD PRIMARY KEY (`id_detalle`);
+
+--
 -- Indices de la tabla `empleado`
 --
 ALTER TABLE `empleado`
@@ -218,6 +247,12 @@ ALTER TABLE `clientes`
 --
 ALTER TABLE `contacto`
   MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de la tabla `detalle_reservas`
+--
+ALTER TABLE `detalle_reservas`
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `empleado`

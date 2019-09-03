@@ -16,72 +16,107 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <title>JSP Page</title>
+        <style>
+            @media print{
+                .parte01,img, .btn, .accion{
+                    display: none;
+                }
+            }
+        </style>
     </head>
     <body style="font-family: 'Nunito', sans-serif">
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Reservas" method="POST">
+                    <form action="Controlador?menu=NuevaReserva" method="POST">
                         <div class="form-header">
-                            <h1>Haz la reservación</h1>
+                            <h1 class="text-center" style="color: #28a745">Haz la reservación</h1>
                         </div>
                         <div class="form-group">
+                            <span class="form-label">DNI del cliente</span>
+                            <div class="d-flex">
+                                <input type="text" value="${cl.getDni()}" style="border: 1px solid #20c997;" name="dniCliente" class="form-control">
+                                <button type="submit" name="accion" value="BuscarCliente" class="btn btn-outline-info">Buscar</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="nombrescliente" value="${cl.getNom()} ${cl.getApe()}" placeholder="Datos Cliente" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <span class="form-label">ID de la Habitación</span>
+                            <div class="d-flex">
+                                <input type="text" value="${habitacion.getId()}" style="border: 1px solid #20c997;" name="idTipoHab" class="form-control">
+                                <button type="submit" name="accion" value="BuscarHabitacion" class="btn btn-outline-info">Buscar</button>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex">
+                            <input type="text" name="tipoHab" value="${habitacion.getTipo_hab()}" placeholder="Datos Habitacion" class="form-control">
+                            <input type="text" name="estado" value="${habitacion.getEstado()}" placeholder="Estado" class="form-control">
+                        </div>
+                        <div class="form-group d-flex">
+                            <input type="text" name="precio" value="${habitacion.getPrecio()}" class="form-control" placeholder="S/.0.00">    
+                            <input type="number" value="1" name="cant" placeholder="" class="form-control col-sm-3"> 
+                        </div>           
+                        <div class="form-group">
                             <span class="form-label">Check In</span>
-                            <input class="form-control" name="fechaE" value="${reserva.getFecha()}" style="border: 1px solid #20c997;" type="date" min="2019-09-01" max="2025-01-01" required>
+                            <input class="form-control" name="fechaE" value="" style="border: 1px solid #20c997;" type="date" min="2019-09-01" max="2025-01-01">
                         </div>
                         <div class="form-group">
                             <span class="form-label">Check out</span>
-                            <input class="form-control" name="fechaS" value="${reserva.getFecha2()}" style="border: 1px solid #20c997;" type="date" min="2019-09-01" max="2025-01-01" required>
-                        </div>
-                        <div class="form-group">
-                            <span class="form-label">Cantidad de Habitaciones</span>
-                            <input type="text" value="${reserva.getCantHab()}" style="border: 1px solid #20c997;" name="cantH" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <span class="form-label">Cantidad de adultos</span>
-                            <input type="text" value="${reserva.getAdultos()}" style="border: 1px solid #20c997;" name="adultos" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <span class="form-label">Cantidad de niños</span>
-                            <input type="text" value="${reserva.getNinios()}" style="border: 1px solid #20c997;" name="ninios" class="form-control">
+                            <input class="form-control" name="fechaS" value="" style="border: 1px solid #20c997;" type="date" min="2019-09-01" max="2025-01-01">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
             <div class="col-sm-8">
-                <div class="card">
+                <div class="card">                    
                     <div class="card-body">
-                        <table class="table table-hover text-center">
+                        <table class="table table-hover">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
+                                    <th>N°</th>
                                     <th>ID</th>
-                                    <th>ENTRADA</th>
-                                    <th>SALIDA</th>
-                                    <th>CANT.HAB.</th>
-                                    <th>ADULTOS</th>
-                                    <th>NIÑOS</th>
-                                    <th>ACCIONES</th>
+                                    <th>HABITACION</th>
+                                    <th>CHECK IN</th>
+                                    <th>CHECK OUT</th>
+                                    <th>PRECIO</th>
+                                    <th>CANTIDAD</th>
+                                    <th>SUBTOTAL</th>                                    
+                                    <th class="accion">ACCION</th>                                    
                                 </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="res" items="${reservas}">
-                                <tr>
-                                    <td>${res.getId()}</td>
-                                    <td>${res.getFecha()}</td>
-                                    <td>${res.getFecha2()}</td>
-                                    <td>${res.getCantHab()}</td>
-                                    <td>${res.getAdultos()}</td>
-                                    <td>${res.getNinios()}</td>
-                                    <td>
-                                        <a class="btn btn-warning" href="Controlador?menu=Reservas&accion=Editar&id_reservas=${res.getId()}">Editar</a>
-                                        <a class="btn btn-danger" href="Controlador?menu=Reservas&accion=Eliminar&id_reservas=${res.getId()}">Eliminar</a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
+                                <c:forEach var="list" items="${lista}">
+                                    <tr class="text-center">
+                                        <td>${list.getItem()}</td>
+                                        <td>${list.getIdhabitacion()}</td>
+                                        <td>${list.getDescripcionH()}</td>
+                                        <td>${list.getFecha()}</td>
+                                        <td>${list.getFecha2()}</td>
+                                        <td>${list.getPrecio()}</td>
+                                        <td>${list.getCantHab()}</td>
+                                        <td>${list.getSubtotal()}</td>
+                                        <td class="d-flex">
+                                            <a href="#" class="btn btn-danger" style="margin-left: 5px">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+
                             </tbody>
                         </table>
+                    </div>
+                    <div class="card-footer" >
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a href="Controlador?menu=NuevaReserva&accion=GenerarReserva" onclick="print()" class="btn btn-success">Generar Reserva</a>
+                                <a href="#" class="btn btn-danger" style="margin-left: 5px">Cancelar</a>
+                            </div>
+                            <div class="col-sm-6 ml-auto d-flex">                                
+                                <label class=" col-sm-6 text-right mt-2">Total a Pagar</label>                                                       
+                                <input type="text" name="txtTotal" value="$/.${totalpagar}0" class="form-control text-center font-weight-bold" style="font-size: 18px;">
+                            </div>
+                        </div>                        
                     </div>
                 </div>
             </div>

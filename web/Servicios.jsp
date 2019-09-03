@@ -41,7 +41,7 @@
                     </div>                         
                 </div>
             </div>                     
-            <div class="col-sm-7">
+            <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-hover table-responsive text-center" style="margin-left: 150px">

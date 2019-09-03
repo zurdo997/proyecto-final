@@ -20,6 +20,7 @@ import Modelo.ServiciosDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,8 +42,6 @@ public class Controlador extends HttpServlet {
     ClienteDAO cldao = new ClienteDAO();
     Servicios ser = new Servicios();
     ServiciosDAO serdao = new ServiciosDAO();
-    Reserva res = new Reserva();
-    ReservaDAO resdao = new ReservaDAO();
     Contacto cont = new Contacto();
     ContactoDAO contdao = new ContactoDAO();
     int idh;
@@ -50,6 +49,20 @@ public class Controlador extends HttpServlet {
     int idc;
     int ids;
     int idr;
+    
+    Reserva res = new Reserva();
+    ReservaDAO resdao = new ReservaDAO();
+    List<Reserva> lista = new ArrayList<>();
+    int item;
+    int cod;
+    double precio;
+    int cant;
+    String descripcion;
+    String estado;
+    String fecha;
+    String fecha2;
+    double subtotal;
+    double totalPagar;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -251,93 +264,81 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Contacto.jsp").forward(request, response);
         }
         
-        if (menu.equals("Reservas")) {
-            switch (accion) {
-                case "Listar":
-                    List lista = resdao.listar();
-                    request.setAttribute("reservas", lista);
+        if (menu.equals("NuevaReserva")) {
+            switch(accion) {
+                case "BuscarCliente":
+                    String dni = request.getParameter("dniCliente");
+                    cl.setDni(dni);
+                    cl = cldao.buscar(dni);
+                    request.setAttribute("cl", cl);
+                    break;
+                case "BuscarHabitacion":
+                    int id = Integer.parseInt(request.getParameter("idTipoHab"));
+                    hab = habdao.listarId(id);
+                    request.setAttribute("cl", cl);
+                    request.setAttribute("habitacion", hab);
+                    request.setAttribute("lista", lista);
+                    request.setAttribute("totalpagar", totalPagar);
                     break;
                 case "Agregar":
-                    String fecha = request.getParameter("fechaE");
-                    String fecha2 = request.getParameter("fechaS");
-                    int cantH = Integer.parseInt(request.getParameter("cantH"));
-                    int cantA = Integer.parseInt(request.getParameter("adultos"));
-                    int cantN = Integer.parseInt(request.getParameter("ninios"));
+                    request.setAttribute("cl", cl);
+                    totalPagar = 0.0;
+                    item = item + 1;
+                    cod = hab.getId();
+                    descripcion = request.getParameter("tipoHab");
+                    estado = request.getParameter("estado");
+                    precio = Double.parseDouble(request.getParameter("precio"));
+                    cant = Integer.parseInt(request.getParameter("cant"));
+                    fecha = request.getParameter("fechaE");
+                    fecha2 = request.getParameter("fechaS");
+                    subtotal = precio * cant;
+                    res = new Reserva();
+                    res.setItem(item);
+                    res.setIdhabitacion(cod);
+                    res.setDescripcionH(descripcion);
                     res.setFecha(fecha);
                     res.setFecha2(fecha2);
-                    res.setCantHab(cantH);
-                    res .setAdultos(cantA);
-                    res .setNinios(cantN);
-                    resdao.agregar(res);
-                    request.getRequestDispatcher("Controlador?menu=Reservas&accion=Listar").forward(request, response);
+                    res.setPrecio(precio);
+                    res.setCantHab(cant);
+                    res.setSubtotal(subtotal);
+                    lista.add(res);
+                    for (int i = 0; i < lista.size(); i++) {
+                        totalPagar = totalPagar + lista.get(i).getSubtotal();
+                    }
+                    request.setAttribute("totalpagar", totalPagar);
+                    request.setAttribute("lista", lista);
                     break;
-                case "Editar":
-                    idr = Integer.parseInt(request.getParameter("id_reservas"));
-                    Reserva r = resdao.listarId(idr);
-                    request.setAttribute("reserva", r);
-                    request.getRequestDispatcher("Controlador?menu=Reservas&accion=Listar").forward(request, response);
+                case "GenerarReserva":
+                    for (int i = 0; i < lista.size(); i++) {
+                        Habitaciones h = new Habitaciones();
+                        int cantidad = lista.get(i).getCantHab();
+                        int idhab = lista.get(i).getIdhabitacion();
+                        HabitacionesDAO aO = new HabitacionesDAO();
+                        h = aO.buscar(idhab);
+                    }
+                    //Guardar Venta
+                    res.setIdcliente(cl.getId());
+                    res.setIdempleado(2);
+                    res.setFecha(request.getParameter("FechaE"));
+                    res.setFecha2(request.getParameter("FechaS"));
+                    res.setCantHab(cant);
+                    res.setMonto(totalPagar);
+                    resdao.guardarReserva(res);
+                    //Detalle Venta
+                    int idr = Integer.parseInt(resdao.IdReservas());
+                    for (int i = 0; i < lista.size(); i++) {
+                        res = new Reserva();
+                        res.setId(idr);
+                        res.setIdhabitacion(lista.get(i).getIdhabitacion());
+                        res.setCantHab(lista.get(i).getCantHab());
+                        res.setPrecio(lista.get(i).getPrecio());
+                        resdao.guardarDetalleReservas(res);
+                    }
                     break;
-                case "Actualizar":
-                    String fechados = request.getParameter("fechaE");
-                    String fecha2dos = request.getParameter("fechaS");
-                    int cantH2 = Integer.parseInt(request.getParameter("cantH"));
-                    int cantA2 = Integer.parseInt(request.getParameter("adultos"));
-                    int cantN2 = Integer.parseInt(request.getParameter("ninios"));
-                    res.setFecha(fechados);
-                    res.setFecha2(fecha2dos);
-                    res.setCantHab(cantH2);
-                    res .setAdultos(cantA2);
-                    res .setNinios(cantN2);
-                    res.setId(idr);
-                    resdao.actualizar(res);
-                    request.getRequestDispatcher("Controlador?menu=Reservas&accion=Listar").forward(request, response);
-                    break;
-                case "Eliminar":
-                    idr = Integer.parseInt(request.getParameter("id_reservas"));
-                    resdao.eliminar(idr);
-                    request.getRequestDispatcher("Controlador?menu=Reservas&accion=Listar").forward(request, response);
-                    break;
-
+                default:
+                    request.getRequestDispatcher("Reservas.jsp").forward(request, response);
             }
             request.getRequestDispatcher("Reservas.jsp").forward(request, response);
-        }
-        
-        if (menu.equals("Servicios")) {
-            switch (accion) {
-                case "Listar":
-                    List lista = serdao.listar();
-                    request.setAttribute("servicios", lista);
-                    break;
-                case "Agregar":
-                    String desc = request.getParameter("txtDesc");
-                    String disp = request.getParameter("txtDisp");
-                    ser.setDescripcion(desc);
-                    ser.setDisp(disp);
-                    serdao.agregar(ser);
-                    request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
-                    break;
-                case "Editar":
-                    ids = Integer.parseInt(request.getParameter("id_serv"));
-                    Servicios s = serdao.listarId(ids);
-                    request.setAttribute("servicio", s);
-                    request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
-                    break;
-                case "Actualizar":
-                    String desc2 = request.getParameter("txtDesc");
-                    String disp2 = request.getParameter("txtDisp");
-                    ser.setDescripcion(desc2);
-                    ser.setDisp(disp2);
-                    ser.setId(ids);
-                    serdao.actualizar(ser);
-                    request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
-                    break;
-                case "Eliminar":
-                    ids = Integer.parseInt(request.getParameter("id_serv"));
-                    serdao.eliminar(ids);
-                    request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
-                    break;
-            }
-            request.getRequestDispatcher("Servicios.jsp").forward(request, response);
         }
     }
 

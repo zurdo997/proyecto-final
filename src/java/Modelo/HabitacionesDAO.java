@@ -23,6 +23,27 @@ public class HabitacionesDAO {
     ResultSet rs;
     int r;
     
+    public Habitaciones buscar(int id){
+      Habitaciones h =new Habitaciones();
+      String sql="select * from habitaciones where id_hab="+id;
+      try {
+          con=cn.Conexion();
+          ps=con.prepareStatement(sql);
+          rs=ps.executeQuery();
+          while (rs.next()) {
+              h.setId(rs.getInt(1));
+              h.setTipo_hab(rs.getString(2));
+              h.setCant(rs.getInt(3));
+              h.setPiso(rs.getInt(3));
+              h.setNumero(rs.getInt(3));
+              h.setPrecio(rs.getDouble(3));
+              h.setEstado(rs.getString(5));
+          }
+      } catch (Exception e) {
+      }
+     return h;
+  }
+    
     //*****Operaciones CRUD*****//
     public List listar() {
         String sql = "select * from habitaciones";

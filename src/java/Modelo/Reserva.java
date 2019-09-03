@@ -10,26 +10,55 @@ package Modelo;
  * @author Alan97
  */
 public class Reserva {
+
     int id;
+    int item;
+    int idcliente;
+    int idempleado;
+    int idhabitacion;
+    String descripcionH;
     String fecha;
     String fecha2;
     int cantHab;
-    int adultos;
-    int ninios;
-    
+    double precio;
+    double subtotal;
+    double monto;
+
     public Reserva() {
-        
+
     }
 
-    public Reserva(int id, String fecha, String fecha2, int cantHab, int adultos, int ninios) {
+    public Reserva(int id, int item, int idcliente, int idempleado, int idhabitacion, String descripcionH, String fecha, String fecha2, int cantHab, double precio, double subtotal, double monto) {
         this.id = id;
+        this.item = item;
+        this.idcliente = idcliente;
+        this.idempleado = idempleado;
+        this.idhabitacion = idhabitacion;
+        this.descripcionH = descripcionH;
         this.fecha = fecha;
         this.fecha2 = fecha2;
         this.cantHab = cantHab;
-        this.adultos = adultos;
-        this.ninios = ninios;
+        this.precio = precio;
+        this.subtotal = subtotal;
+        this.monto = monto;
     }
-    
+
+    public int getItem() {
+        return item;
+    }
+
+    public void setItem(int item) {
+        this.item = item;
+    }
+
+    public String getDescripcionH() {
+        return descripcionH;
+    }
+
+    public void setDescripcionH(String descripcionH) {
+        this.descripcionH = descripcionH;
+    }
+
     public int getId() {
         return id;
     }
@@ -62,20 +91,52 @@ public class Reserva {
         this.cantHab = cantHab;
     }
 
-    public int getAdultos() {
-        return adultos;
+    public int getIdcliente() {
+        return idcliente;
     }
 
-    public void setAdultos(int adultos) {
-        this.adultos = adultos;
+    public void setIdcliente(int idcliente) {
+        this.idcliente = idcliente;
     }
 
-    public int getNinios() {
-        return ninios;
+    public int getIdhabitacion() {
+        return idhabitacion;
     }
 
-    public void setNinios(int ninios) {
-        this.ninios = ninios;
+    public void setIdhabitacion(int idhabitacion) {
+        this.idhabitacion = idhabitacion;
     }
-    
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public int getIdempleado() {
+        return idempleado;
+    }
+
+    public void setIdempleado(int idempleado) {
+        this.idempleado = idempleado;
+    }
+
 }
