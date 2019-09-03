@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-09-2019 a las 02:11:47
+-- Tiempo de generación: 03-09-2019 a las 21:56:32
 -- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.8
+-- Versión de PHP: 7.1.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -41,7 +41,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `dni`, `nombres`, `apellido`, `telefono`) VALUES
-(1, '12345', 'luisss', 'suarez', '12346'),
+(1, '12345', 'Luis', 'Suarez', '12346'),
 (3, '54321', 'paulo', 'dybala', '1213543');
 
 -- --------------------------------------------------------
@@ -87,7 +87,11 @@ CREATE TABLE `detalle_reservas` (
 
 INSERT INTO `detalle_reservas` (`id_detalle`, `id_reservas`, `id_hab`, `cant_hab`, `precio_res`) VALUES
 (1, 3, 3, 1, 500),
-(2, 3, 3, 2, 500);
+(2, 3, 3, 2, 500),
+(3, 3, 5, 1, 170),
+(4, 3, 4, 1, 100),
+(5, 3, 5, 1, 170),
+(6, 3, 4, 1, 100);
 
 -- --------------------------------------------------------
 
@@ -111,7 +115,8 @@ CREATE TABLE `empleado` (
 INSERT INTO `empleado` (`id_empleado`, `dni`, `nombres`, `apellido`, `telefono`, `user`) VALUES
 (1, '12345', 'Alan', 'Franco', '12345678', 'alan97'),
 (4, '1234', 'Lionel', 'Messi', '123466', 'messi10'),
-(8, '12345', 'Cristiano', 'Ronaldo', '13558688', 'ronaldo7');
+(8, '12345', 'Cristiano', 'Ronaldo', '13558688', 'ronaldo7'),
+(9, '32132123', 'jorge', 'canteros', '123432432', 'totojorge');
 
 -- --------------------------------------------------------
 
@@ -135,7 +140,10 @@ CREATE TABLE `habitaciones` (
 
 INSERT INTO `habitaciones` (`id_hab`, `tipo`, `cant_camas`, `piso`, `numero`, `precio`, `estado`) VALUES
 (1, 'suite junior', 2, 3, 35, 300, 'ocupada'),
-(3, 'suite presidencial', 2, 10, 100, 500, 'ocupada');
+(3, 'suite presidencial', 2, 10, 100, 500, 'ocupada'),
+(4, 'individual', 1, 2, 22, 100, 'libre'),
+(5, 'doble', 2, 3, 30, 170, 'libre'),
+(6, 'king', 1, 5, 54, 250, 'ocupada');
 
 -- --------------------------------------------------------
 
@@ -181,10 +189,9 @@ INSERT INTO `servicio` (`id_serv`, `descripcion`, `disponible`) VALUES
 (1, 'Calefacción', 'no disponible'),
 (2, 'Mayordomo', 'no disponible'),
 (3, 'Piscina', 'disponible'),
-(4, 'WI-FI', 'disponible'),
 (5, 'Aire acondicionado', 'disponible'),
 (6, 'Alquiler de coches', 'no disponible'),
-(7, 'Salas de reuniÃ³n', 'no disponible');
+(7, 'Salas de reunión', 'no disponible');
 
 --
 -- Índices para tablas volcadas
@@ -252,19 +259,19 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `detalle_reservas`
 --
 ALTER TABLE `detalle_reservas`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `habitaciones`
 --
 ALTER TABLE `habitaciones`
-  MODIFY `id_hab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_hab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `reservas`
@@ -276,7 +283,7 @@ ALTER TABLE `reservas`
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id_serv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_serv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
