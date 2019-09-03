@@ -70,6 +70,7 @@ public class Controlador extends HttpServlet {
         PrintWriter out = response.getWriter();
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
+        
         if (menu.equals("PantallaPrincipal")) {
             request.getRequestDispatcher("PantallaPrincipal.jsp").forward(request, response);
         }
@@ -142,7 +143,45 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
         }
-
+        
+        if (menu.equals("Servicios")) {
+            switch (accion) {
+                case "Listar":
+                    List lista = serdao.listar();
+                    request.setAttribute("servicios", lista);
+                    break;
+                case "Agregar":
+                    String desc = request.getParameter("txtDesc");
+                    String disp = request.getParameter("txtDisp");
+                    ser.setDescripcion(desc);
+                    ser.setDisp(disp);
+                    serdao.agregar(ser);
+                    request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    ids = Integer.parseInt(request.getParameter("id_serv"));
+                    Servicios s = serdao.listarId(ids);
+                    request.setAttribute("servicio", s);
+                    request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
+                    break;
+                case "Actualizar":
+                    String desc2 = request.getParameter("txtDesc");
+                    String disp2 = request.getParameter("txtDisp");
+                    ser.setDescripcion(desc2);
+                    ser.setDisp(disp2);
+                    ser.setId(ids);
+                    serdao.actualizar(ser);
+                    request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
+                    break;
+                case "Eliminar":
+                    ids= Integer.parseInt(request.getParameter("id_serv"));
+                    serdao.eliminar(ids);
+                    request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
+                    break;
+            }
+            request.getRequestDispatcher("Servicios.jsp").forward(request, response);
+        }
+        
         if (menu.equals("Habitaciones")) {
             switch (accion) {
                 case "Listar":
@@ -313,18 +352,20 @@ public class Controlador extends HttpServlet {
                         Habitaciones h = new Habitaciones();
                         int cantidad = lista.get(i).getCantHab();
                         int idhab = lista.get(i).getIdhabitacion();
-                        HabitacionesDAO aO = new HabitacionesDAO();
-                        h = aO.buscar(idhab);
+                        HabitacionesDAO hdao = new HabitacionesDAO();
+                        h = hdao.buscar(idhab);
+                        String estAct = "ocupada";
+                        hdao.actualizarEstado(idhab, estAct);
                     }
-                    //Guardar Venta
+                    //Guardar Reserva
                     res.setIdcliente(cl.getId());
-                    res.setIdempleado(2);
+                    res.setIdempleado(em.getId());
                     res.setFecha(request.getParameter("FechaE"));
                     res.setFecha2(request.getParameter("FechaS"));
                     res.setCantHab(cant);
                     res.setMonto(totalPagar);
                     resdao.guardarReserva(res);
-                    //Detalle Venta
+                    //Detalle Reserva
                     int idr = Integer.parseInt(resdao.IdReservas());
                     for (int i = 0; i < lista.size(); i++) {
                         res = new Reserva();

@@ -34,15 +34,27 @@ public class HabitacionesDAO {
               h.setId(rs.getInt(1));
               h.setTipo_hab(rs.getString(2));
               h.setCant(rs.getInt(3));
-              h.setPiso(rs.getInt(3));
-              h.setNumero(rs.getInt(3));
-              h.setPrecio(rs.getDouble(3));
-              h.setEstado(rs.getString(5));
+              h.setPiso(rs.getInt(4));
+              h.setNumero(rs.getInt(5));
+              h.setPrecio(rs.getDouble(6));
+              h.setEstado(rs.getString(7));
           }
       } catch (Exception e) {
       }
      return h;
   }
+    public int actualizarEstado(int id, String estado) {
+        String sql = "update reservas set estado=? where id_reservas=?";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, estado);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return r;
+    }
     
     //*****Operaciones CRUD*****//
     public List listar() {
