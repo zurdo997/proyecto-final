@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-09-2019 a las 21:56:32
+-- Tiempo de generación: 04-09-2019 a las 19:50:55
 -- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.1.31
+-- Versión de PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,7 +42,10 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`id_cliente`, `dni`, `nombres`, `apellido`, `telefono`) VALUES
 (1, '12345', 'Luis', 'Suarez', '12346'),
-(3, '54321', 'paulo', 'dybala', '1213543');
+(3, '54321', 'Paulo', 'Dybala', '1213543'),
+(4, '123456', 'Jordi', 'Alba', '131535335'),
+(5, '654321', 'Sergio', 'Busquets', '11315353'),
+(6, '987654', 'Ivan', 'Rakitic', '1151531');
 
 -- --------------------------------------------------------
 
@@ -86,12 +89,11 @@ CREATE TABLE `detalle_reservas` (
 --
 
 INSERT INTO `detalle_reservas` (`id_detalle`, `id_reservas`, `id_hab`, `cant_hab`, `precio_res`) VALUES
-(1, 3, 3, 1, 500),
-(2, 3, 3, 2, 500),
-(3, 3, 5, 1, 170),
-(4, 3, 4, 1, 100),
-(5, 3, 5, 1, 170),
-(6, 3, 4, 1, 100);
+(11, 4, 3, 1, 500),
+(12, 5, 4, 1, 100),
+(13, 6, 6, 7, 250),
+(14, 7, 4, 5, 100),
+(15, 8, 1, 3, 300);
 
 -- --------------------------------------------------------
 
@@ -115,8 +117,7 @@ CREATE TABLE `empleado` (
 INSERT INTO `empleado` (`id_empleado`, `dni`, `nombres`, `apellido`, `telefono`, `user`) VALUES
 (1, '12345', 'Alan', 'Franco', '12345678', 'alan97'),
 (4, '1234', 'Lionel', 'Messi', '123466', 'messi10'),
-(8, '12345', 'Cristiano', 'Ronaldo', '13558688', 'ronaldo7'),
-(9, '32132123', 'jorge', 'canteros', '123432432', 'totojorge');
+(8, '12345', 'Cristiano', 'Ronaldo', '13558688', 'ronaldo7');
 
 -- --------------------------------------------------------
 
@@ -139,11 +140,11 @@ CREATE TABLE `habitaciones` (
 --
 
 INSERT INTO `habitaciones` (`id_hab`, `tipo`, `cant_camas`, `piso`, `numero`, `precio`, `estado`) VALUES
-(1, 'suite junior', 2, 3, 35, 300, 'ocupada'),
-(3, 'suite presidencial', 2, 10, 100, 500, 'ocupada'),
-(4, 'individual', 1, 2, 22, 100, 'libre'),
-(5, 'doble', 2, 3, 30, 170, 'libre'),
-(6, 'king', 1, 5, 54, 250, 'ocupada');
+(1, 'suite junior', 2, 3, 35, 300, 'no disponible'),
+(3, 'suite presidencial', 2, 10, 100, 500, 'disponible'),
+(4, 'individual', 1, 2, 22, 100, 'no disponible'),
+(5, 'doble', 2, 3, 30, 170, 'disponible'),
+(6, 'king', 1, 5, 54, 250, 'disponible');
 
 -- --------------------------------------------------------
 
@@ -166,8 +167,11 @@ CREATE TABLE `reservas` (
 --
 
 INSERT INTO `reservas` (`id_reservas`, `id_cliente`, `id_empleado`, `entrada`, `salida`, `cant_hab`, `monto`) VALUES
-(2, 0, 0, '2019-09-02', '2019-09-10', 2, 0),
-(3, 0, 0, '2019-09-10', '2019-09-18', 2, 0);
+(4, 1, 0, '2019-09-04', '2019-09-10', 1, 500),
+(5, 3, 0, '2019-09-10', '2019-09-12', 1, 100),
+(6, 1, 0, '2019-09-10', '2019-09-17', 7, 1750),
+(7, 5, 0, '2019-09-06', '2019-09-10', 5, 500),
+(8, 1, 0, '2019-09-12', '2019-09-14', 3, 900);
 
 -- --------------------------------------------------------
 
@@ -247,7 +251,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `contacto`
@@ -259,7 +263,7 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `detalle_reservas`
 --
 ALTER TABLE `detalle_reservas`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `empleado`
@@ -277,7 +281,7 @@ ALTER TABLE `habitaciones`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id_reservas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_reservas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`

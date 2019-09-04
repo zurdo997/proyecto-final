@@ -354,7 +354,7 @@ public class Controlador extends HttpServlet {
                         int idhab = lista.get(i).getIdhabitacion();
                         HabitacionesDAO hdao = new HabitacionesDAO();
                         h = hdao.buscar(idhab);
-                        String estAct = "ocupada";
+                        String estAct = "no disponible";
                         hdao.actualizarEstado(idhab, estAct);
                     }
                     //Guardar Reserva
@@ -375,6 +375,7 @@ public class Controlador extends HttpServlet {
                         res.setPrecio(lista.get(i).getPrecio());
                         resdao.guardarDetalleReservas(res);
                     }
+                    lista = new ArrayList<>();
                     break;
                 default:
                     request.getRequestDispatcher("Reservas.jsp").forward(request, response);
