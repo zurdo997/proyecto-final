@@ -20,6 +20,7 @@
                 border: none;
             }
         </style>
+        <script src="https://kit.fontawesome.com/265037a891.js"></script>
     </head>
     <body style="font-family: 'Nunito', sans-serif">
         <div class="d-flex">
@@ -60,8 +61,8 @@
                                         <td>${ser.getDescripcion()}</td>
                                         <td>${ser.getDisp()}</td>                           
                                         <td>
-                                            <a class="btn btn-warning" href="Controlador?menu=Servicios&accion=Editar&id_serv=${ser.getId()}">Editar</a>
-                                            <a class="btn btn-danger" href="Controlador?menu=Servicios&accion=Eliminar&id_serv=${ser.getId()}">Eliminar</a>
+                                            <a class="btn btn-warning" href="Controlador?menu=Servicios&accion=Editar&id_serv=${ser.getId()}"><i class="fas fa-edit"></i></a>
+                                            <a class="btn btn-danger" href="Controlador?menu=Servicios&accion=Eliminar&id_serv=${ser.getId()}"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

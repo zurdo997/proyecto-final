@@ -23,6 +23,7 @@
                 }
             }
         </style>
+        <script src="https://kit.fontawesome.com/265037a891.js"></script>
     </head>
     <body style="font-family: 'Nunito', sans-serif">
         <div class="d-flex">
@@ -98,7 +99,7 @@
                                         <td>${list.getCantHab()}</td>
                                         <td>${list.getSubtotal()}</td>
                                         <td class="d-flex">
-                                            <a href="#" class="btn btn-danger" style="margin-left: 5px">Eliminar</a>
+                                            <a href="#" class="btn btn-danger" style="margin-left: 5px"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

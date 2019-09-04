@@ -22,6 +22,7 @@
                 border: none;
             }
         </style>
+        <script src="https://kit.fontawesome.com/265037a891.js"></script>
     </head>
     <body style="font-family: 'Nunito', sans-serif">
         <div class="d-flex">
@@ -78,8 +79,8 @@
                                         <td>${em.getTel()}</td>
                                         <td>${em.getUser()}</td>
                                         <td>
-                                            <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&id_empleado=${em.getId()}">Editar</a>
-                                            <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&id_empleado=${em.getId()}">Eliminar</a>
+                                            <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&id_empleado=${em.getId()}"><i class="fas fa-edit"></i></a>
+                                            <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&id_empleado=${em.getId()}"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

@@ -20,6 +20,7 @@
                 border: none;
             }
         </style>
+        <script src="https://kit.fontawesome.com/265037a891.js"></script>
     </head>
     <body style="font-family: 'Nunito', sans-serif">
         <div class="d-flex">
@@ -84,8 +85,8 @@
                                         <td>${hab.getPrecio()}</td>
                                         <td>${hab.getEstado()}</td>
                                         <td>
-                                            <a class="btn btn-warning" href="Controlador?menu=Habitaciones&accion=Editar&id_hab=${hab.getId()}">Editar</a>
-                                            <a class="btn btn-danger" href="Controlador?menu=Habitaciones&accion=Eliminar&id_hab=${hab.getId()}">Eliminar</a>
+                                            <a class="btn btn-warning" href="Controlador?menu=Habitaciones&accion=Editar&id_hab=${hab.getId()}"><i class="fas fa-edit"></i></a>
+                                            <a class="btn btn-danger" href="Controlador?menu=Habitaciones&accion=Eliminar&id_hab=${hab.getId()}"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>
