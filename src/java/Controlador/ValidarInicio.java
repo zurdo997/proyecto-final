@@ -73,6 +73,7 @@ public class ValidarInicio extends HttpServlet {
                 request.setAttribute("usuario", em);
                 request.getRequestDispatcher("Controlador?menu=PantallaPrincipal").forward(request, response);
             } else {
+                request.setAttribute("incorrecto", "El nombre de usuario o la contraseña no es correcta.");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } else {

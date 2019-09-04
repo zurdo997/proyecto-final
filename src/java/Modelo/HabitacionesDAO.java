@@ -44,7 +44,7 @@ public class HabitacionesDAO {
      return h;
   }
     public int actualizarEstado(int id, String estado) {
-        String sql = "update reservas set estado=? where id_reservas=?";
+        String sql = "update habitaciones set estado=? where id_hab=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

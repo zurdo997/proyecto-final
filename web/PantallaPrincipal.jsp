@@ -27,25 +27,25 @@
             <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" href="#">Home</a>
+                        <a style="margin-left: 10px;border: none" href="#" class="btn btn-outline-light" onclick="$('iframe').hide();">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow1' href="Controlador?menu=Servicios&accion=Listar" target="myFrame">Servicios</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Servicios&accion=Listar" target="myFrame">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow2' href="Controlador?menu=Empleados&accion=Listar" target="myFrame">Empleados</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Empleados&accion=Listar" target="myFrame">Empleados</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow3' href="Controlador?menu=Habitaciones&accion=Listar" target="myFrame">Habitaciones</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Habitaciones&accion=Listar" target="myFrame">Habitaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow4' href="Controlador?menu=Clientes&accion=Listar" target="myFrame">Clientes</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Clientes&accion=Listar" target="myFrame">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow5' href="Controlador?menu=NuevaReserva&accion=default" target="myFrame">Reservas</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=NuevaReserva&accion=default" target="myFrame">Reservas</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" id='hideshow6' href="Controlador?menu=Contacto&accion=default" target="myFrame">Contacto</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Contacto&accion=default" target="myFrame">Contacto</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right ml-auto">
@@ -67,9 +67,7 @@
             </div>
         </nav>
         <header>
-            <div class="panel">
-                <iframe name="myFrame" class="content" style="height: 600px;width: 100%; border: none;display: none"></iframe>
-            </div>
+            <iframe name="myFrame" id="a" class="content" style="height: 650px;width: 100%; border: none;display: none"></iframe>
             <div class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -116,37 +114,5 @@
                 </div>
             </div>
         </footer>
-        <script id="rendered-js">
-            $(document).ready(function () {
-                $('#hideshow1').on('click', function (event) {
-                    $('.content').toggle('show');
-                });
-            });
-            $(document).ready(function () {
-                $('#hideshow2').on('click', function (event) {
-                    $('.content').toggle('show');
-                });
-            });
-            $(document).ready(function () {
-                $('#hideshow3').on('click', function (event) {
-                    $('.content').toggle('show');
-                });
-            });
-            $(document).ready(function () {
-                $('#hideshow4').on('click', function (event) {
-                    $('.content').toggle('show');
-                });
-            });
-            $(document).ready(function () {
-                $('#hideshow5').on('click', function (event) {
-                    $('.content').toggle('show');
-                });
-            });
-            $(document).ready(function () {
-                $('#hideshow6').on('click', function (event) {
-                    $('.content').toggle('show');
-                });
-            });
-        </script>
     </body>
 </html>

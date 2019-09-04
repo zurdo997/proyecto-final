@@ -56,7 +56,7 @@ public class ReservaDAO {
     }
     
     public int guardarDetalleReservas(Reserva res){
-        String sql="insert into detalle_reservas(id_reservas, id_hab,cant_hab,precio_res)values(?,?,?,?)";
+        String sql="insert into detalle_reservas(id_reservas,id_hab,cant_hab,precio_res)values(?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

@@ -38,14 +38,8 @@
                 </div>        
             </form>
             <p class="text-center"><a href="PantallaRegistro.jsp">Crea una Cuenta</a></p>
-            <div>
-                <% if (request.getAttribute("cantidadIncorrectos") != null) {
-                %>
-                <p class="text-center" style="color:#ffc107">Contraseña Incorrecta</p>
-                <p class="text-center" style="color:#ffc107">Cantidad de intentos:
-                    <%= request.getAttribute("cantidadIncorrectos")%></p>
-                    <% }
-                    %>
+            <div class="text-center">
+                 <label style="color: #d01a59;"><strong>${incorrecto}</strong></label>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

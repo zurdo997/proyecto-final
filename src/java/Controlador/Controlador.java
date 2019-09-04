@@ -359,9 +359,9 @@ public class Controlador extends HttpServlet {
                     }
                     //Guardar Reserva
                     res.setIdcliente(cl.getId());
-                    res.setIdempleado(em.getId());
-                    res.setFecha(request.getParameter("FechaE"));
-                    res.setFecha2(request.getParameter("FechaS"));
+                    res.setIdempleado(em.getId());//Revisar: envía id_empleado = 0
+                    res.setFecha(fecha);
+                    res.setFecha2(fecha2);
                     res.setCantHab(cant);
                     res.setMonto(totalPagar);
                     resdao.guardarReserva(res);
