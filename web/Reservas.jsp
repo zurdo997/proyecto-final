@@ -99,7 +99,7 @@
                                         <td>${list.getCantHab()}</td>
                                         <td>${list.getSubtotal()}</td>
                                         <td class="d-flex">
-                                            <a href="#" class="btn btn-danger" style="margin-left: 5px"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="#" class="btn btn-danger" style="margin-left: 5px" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

@@ -85,8 +85,8 @@
                                         <td>${hab.getPrecio()}</td>
                                         <td>${hab.getEstado()}</td>
                                         <td>
-                                            <a class="btn btn-warning" href="Controlador?menu=Habitaciones&accion=Editar&id_hab=${hab.getId()}"><i class="fas fa-edit"></i></a>
-                                            <a class="btn btn-danger" href="Controlador?menu=Habitaciones&accion=Eliminar&id_hab=${hab.getId()}"><i class="fas fa-trash-alt"></i></a>
+                                            <a class="btn btn-warning" href="Controlador?menu=Habitaciones&accion=Editar&id_hab=${hab.getId()}" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a class="btn btn-danger" href="Controlador?menu=Habitaciones&accion=Eliminar&id_hab=${hab.getId()}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

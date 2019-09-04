@@ -73,8 +73,8 @@
                                         <td>${cli.getApe()}</td>
                                         <td>${cli.getTel()}</td>                                        
                                         <td>
-                                            <a class="btn btn-warning" href="Controlador?menu=Clientes&accion=Editar&id_cliente=${cli.getId()}"><i class="fas fa-edit"></i></a>
-                                            <a class="btn btn-danger" href="Controlador?menu=Clientes&accion=Eliminar&id_cliente=${cli.getId()}"><i class="fas fa-trash-alt"></i></a>
+                                            <a class="btn btn-warning" href="Controlador?menu=Clientes&accion=Editar&id_cliente=${cli.getId()}" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a class="btn btn-danger" href="Controlador?menu=Clientes&accion=Eliminar&id_cliente=${cli.getId()}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

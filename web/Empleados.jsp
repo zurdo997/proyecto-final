@@ -79,8 +79,8 @@
                                         <td>${em.getTel()}</td>
                                         <td>${em.getUser()}</td>
                                         <td>
-                                            <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&id_empleado=${em.getId()}"><i class="fas fa-edit"></i></a>
-                                            <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&id_empleado=${em.getId()}"><i class="fas fa-trash-alt"></i></a>
+                                            <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&id_empleado=${em.getId()}" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&id_empleado=${em.getId()}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

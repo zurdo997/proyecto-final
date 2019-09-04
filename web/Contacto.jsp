@@ -30,6 +30,7 @@
                 color: #4938ff;
             }
         </style>
+        <script src="https://kit.fontawesome.com/265037a891.js"></script>
     </head>
     <body style="font-family: 'Nunito', sans-serif">
         <div class="d-flex">
@@ -58,7 +59,7 @@
                                 <textarea class="form-control" style="border: 1px solid #20c997;" rows="4" name="txtMens"></textarea>
                             </div>
                             <div>
-                                <input type="submit" name="accion" value="Enviar" class="btn btn-primary">
+                                <button type="submit" name="accion" value="Enviar" class="btn btn-primary" title="Enviar"><i class="fas fa-paper-plane"></i></button>
                                 <label style="color: #4938ff"><strong>   ${mensaje}</strong></label>
                             </div>
                         </form>
