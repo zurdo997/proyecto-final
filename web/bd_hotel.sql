@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-09-2019 a las 19:50:55
+-- Tiempo de generación: 05-09-2019 a las 01:24:57
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -93,7 +93,8 @@ INSERT INTO `detalle_reservas` (`id_detalle`, `id_reservas`, `id_hab`, `cant_hab
 (12, 5, 4, 1, 100),
 (13, 6, 6, 7, 250),
 (14, 7, 4, 5, 100),
-(15, 8, 1, 3, 300);
+(15, 8, 1, 3, 300),
+(16, 9, 3, 3, 500);
 
 -- --------------------------------------------------------
 
@@ -141,7 +142,7 @@ CREATE TABLE `habitaciones` (
 
 INSERT INTO `habitaciones` (`id_hab`, `tipo`, `cant_camas`, `piso`, `numero`, `precio`, `estado`) VALUES
 (1, 'suite junior', 2, 3, 35, 300, 'no disponible'),
-(3, 'suite presidencial', 2, 10, 100, 500, 'disponible'),
+(3, 'suite presidencial', 2, 10, 100, 500, 'no disponible'),
 (4, 'individual', 1, 2, 22, 100, 'no disponible'),
 (5, 'doble', 2, 3, 30, 170, 'disponible'),
 (6, 'king', 1, 5, 54, 250, 'disponible');
@@ -171,7 +172,8 @@ INSERT INTO `reservas` (`id_reservas`, `id_cliente`, `id_empleado`, `entrada`, `
 (5, 3, 0, '2019-09-10', '2019-09-12', 1, 100),
 (6, 1, 0, '2019-09-10', '2019-09-17', 7, 1750),
 (7, 5, 0, '2019-09-06', '2019-09-10', 5, 500),
-(8, 1, 0, '2019-09-12', '2019-09-14', 3, 900);
+(8, 1, 0, '2019-09-12', '2019-09-14', 3, 900),
+(9, 1, 0, '2019-09-09', '2019-09-11', 3, 1500);
 
 -- --------------------------------------------------------
 
@@ -263,7 +265,7 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `detalle_reservas`
 --
 ALTER TABLE `detalle_reservas`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `empleado`
@@ -281,7 +283,7 @@ ALTER TABLE `habitaciones`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id_reservas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_reservas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`

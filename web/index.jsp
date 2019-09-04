@@ -20,7 +20,7 @@
         <title>Reservas para hotel</title>
     </head>
     <body style="font-family:'Nunito', sans-serif;">
-        <div class="login-form">
+        <div class="login-form" style="background: rgba(0, 0, 0, 0.4117647058823529);border-radius: 10px;">
             <form action="ValidarInicio" method="POST">
                 <h2 class="text-center">Inicie Sesión</h2>       
                 <div class="form-group">
@@ -36,11 +36,12 @@
                     <label class="pull-left checkbox-inline" style="color: #d51a56"><input type="checkbox"> Recuérdame</label>
                     <a href="#" class="pull-right">Olvidó su contraseña</a>
                 </div>        
+                <p class="text-center"><a href="PantallaRegistro.jsp">Crea una Cuenta</a></p>
             </form>
-            <p class="text-center"><a href="PantallaRegistro.jsp">Crea una Cuenta</a></p>
-            <div class="text-center" style=" height: 50px;">
-                 <label style="color: #e21d1d; background: #ffc107; border-radius: .25em"><strong>${incorrecto}</strong></label>
-            </div>
+            
+        </div>
+        <div class="text-center" style="height: 60px; margin-top: 10px">
+            <label style="color: #e21d1d; background: #ffc107; border-radius: .10em"><strong>${incorrecto}</strong></label>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
