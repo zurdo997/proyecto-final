@@ -365,6 +365,7 @@ public class Controlador extends HttpServlet {
                     res.setCantHab(cant);
                     res.setMonto(totalPagar);
                     resdao.guardarReserva(res);
+                    
                     //Detalle Reserva
                     int idr = Integer.parseInt(resdao.IdReservas());
                     for (int i = 0; i < lista.size(); i++) {

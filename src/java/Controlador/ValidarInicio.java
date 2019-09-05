@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -66,6 +67,7 @@ public class ValidarInicio extends HttpServlet {
         processRequest(request, response);
         String accion = request.getParameter("accion");
         if (accion.equalsIgnoreCase("Ingresar")) {
+            //HttpSession sesion = request.getSession(true);
             String user = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");
             em = emdao.validar(user, pass);

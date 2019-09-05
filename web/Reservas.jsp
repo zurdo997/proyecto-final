@@ -56,7 +56,7 @@
                         </div>
                         <div class="form-group d-flex">
                             <input type="text" name="precio" value="${habitacion.getPrecio()}" class="form-control" placeholder="S/.0.00">    
-                            <input type="number" value="1" name="cant" placeholder="" class="form-control col-sm-3"> 
+                            <input type="number" value="1" name="cant" class="form-control col-sm-3"> 
                         </div>           
                         <div class="form-group">
                             <span class="form-label">Check In</span>

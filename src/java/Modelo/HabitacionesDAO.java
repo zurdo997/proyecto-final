@@ -67,12 +67,7 @@ public class HabitacionesDAO {
             while (rs.next()) {
                 Habitaciones hab = new Habitaciones();
                 hab.setId(rs.getInt(1));
-                hab.setTipo_hab(rs.getString(2));
-                hab.setCant(rs.getInt(3));
-                hab.setPiso(rs.getInt(4));
-                hab.setNumero(rs.getInt(5));
-                hab.setPrecio(rs.getDouble(6));
-                hab.setEstado(rs.getString(7));
+                
                 lista.add(hab);
             }
         } catch (Exception e) {
