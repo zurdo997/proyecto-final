@@ -27,7 +27,7 @@
             <div class="col-sm-3">
                 <div class="card" style="border:none">
                     <div class="card-body">
-                        <form action="Controlador?menu=Habitaciones" method="POST">
+                        <form action="Controlador?menu=Habitaciones" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Tipo de habitación</label>
                                 <input type="text" value="${habitacion.getTipo_hab()}" style="border: 1px solid #20c997;" name="txtTipo" class="form-control">
@@ -51,6 +51,10 @@
                             <div class="form-group">
                                 <label>Estado</label>
                                 <input type="text" value="${habitacion.getEstado()}" style="border: 1px solid #20c997;" name="txtEstado" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">Foto</label>
+                                <input type="file" class="form-control-file" style="width: 300px" name="txtFoto" required="required">
                             </div>
                             <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
                             <input type="submit" name="accion" value="Actualizar" class="btn btn-success">

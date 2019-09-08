@@ -36,7 +36,10 @@
                         <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Empleados&accion=Listar" target="myFrame">Empleados</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Habitaciones&accion=Listar" target="myFrame">Habitaciones</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=HabitacionesIMG&accion=default" target="myFrame">Habitaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Habitaciones&accion=Listar" target="myFrame">Modificar Habitaciones</a>
                     </li>
                     <li class="nav-item">
                         <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Clientes&accion=Listar" target="myFrame">Clientes</a>
@@ -45,7 +48,7 @@
                         <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=NuevaReserva&accion=default" target="myFrame">Reservas</a>
                     </li>
                     <li class="nav-item">
-                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Contacto&accion=default" target="myFrame">Contacto</a>
+                        <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Contacto&accion=default" target="myFrame">Consulta</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right ml-auto">
@@ -67,7 +70,7 @@
             </div>
         </nav>
         <header>
-            <iframe name="myFrame" id="a" class="content" style="height: 650px;width: 100%; border: none;display: none"></iframe>
+            <iframe name="myFrame" id="a" class="content" style="height: 750px;width: 100%; border: none;display: none"></iframe>
             <div class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carousel" data-slide-to="0" class="active"></li>

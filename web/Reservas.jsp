@@ -55,9 +55,10 @@
                             <input type="text" name="estado" value="${habitacion.getEstado()}" placeholder="Estado" class="form-control">
                         </div>
                         <div class="form-group d-flex">
-                            <input type="text" name="precio" value="${habitacion.getPrecio()}" class="form-control" placeholder="S/.0.00">    
+                            <input type="text" name="precio" value="$.${habitacion.getPrecio()}" class="form-control" placeholder="S/.0.00">   
+                            <span class="form-label" style="position: relative;top: 6px;margin-left: 6px; margin-right: 6px">Cant.Habitaciones:</span>
                             <input type="number" value="1" name="cant" class="form-control col-sm-3"> 
-                        </div>           
+                        </div>
                         <div class="form-group">
                             <span class="form-label">Check In</span>
                             <input class="form-control" name="fechaE" value="" style="border: 1px solid #20c997;" type="date" min="2019-09-01" max="2025-01-01">

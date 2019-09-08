@@ -18,6 +18,7 @@ import Modelo.ReservaDAO;
 import Modelo.Servicios;
 import Modelo.ServiciosDAO;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -26,16 +27,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import javax.servlet.annotation.MultipartConfig;
 
 /**
  *
  * @author Desarrollo Web
  */
+@MultipartConfig
 public class Controlador extends HttpServlet {
 
     int contadorError = 0;
     Habitaciones hab = new Habitaciones();
     HabitacionesDAO habdao = new HabitacionesDAO();
+    List<Habitaciones> habitaciones = new ArrayList<>();
     Empleado em = new Empleado();
     EmpleadoDAO emdao = new EmpleadoDAO();
     Cliente cl = new Cliente();
@@ -70,11 +75,21 @@ public class Controlador extends HttpServlet {
         PrintWriter out = response.getWriter();
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
+        habitaciones = habdao.listar();
         
         if (menu.equals("PantallaPrincipal")) {
             request.getRequestDispatcher("PantallaPrincipal.jsp").forward(request, response);
         }
-
+        
+        if (menu.equals("HabitacionesIMG")) {
+            switch(accion) {
+                default:
+                    request.setAttribute("habitaciones2", habitaciones);
+                    request.getRequestDispatcher("HabitacionesIMG.jsp").forward(request, response);
+            }
+            request.getRequestDispatcher("HabitacionesIMG.jsp").forward(request, response);
+        }
+        
         if (menu.equals("Registrar")) {
             switch (accion) {
                 case "AgregarE":
@@ -195,12 +210,15 @@ public class Controlador extends HttpServlet {
                     int num = Integer.parseInt(request.getParameter("txtNum"));
                     double precio = Double.parseDouble(request.getParameter("txtPre"));
                     String est = request.getParameter("txtEstado");
+                    Part part = request.getPart("txtFoto");
+                    InputStream inputStream = part.getInputStream();
                     hab.setTipo_hab(tipoHab);
                     hab.setCant(cant);
                     hab.setPiso(piso);
                     hab.setNumero(num);
                     hab.setPrecio(precio);
                     hab.setEstado(est);
+                    hab.setFoto(inputStream);
                     habdao.agregar(hab);
                     request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
                     break;
@@ -217,12 +235,15 @@ public class Controlador extends HttpServlet {
                     int num2 = Integer.parseInt(request.getParameter("txtNum"));
                     double precio2 = Double.parseDouble(request.getParameter("txtPre"));
                     String est2 = request.getParameter("txtEstado");
+                    Part part1 = request.getPart("txtFoto");
+                    InputStream inputStream1 = part1.getInputStream();
                     hab.setTipo_hab(tipoHab2);
                     hab.setCant(cant2);
                     hab.setPiso(piso2);
                     hab.setNumero(num2);
                     hab.setPrecio(precio2);
                     hab.setEstado(est2);
+                    hab.setFoto(inputStream1);
                     hab.setId(idh);
                     habdao.actualizar(hab);
                     request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
@@ -354,7 +375,7 @@ public class Controlador extends HttpServlet {
                         int idhab = lista.get(i).getIdhabitacion();
                         HabitacionesDAO hdao = new HabitacionesDAO();
                         h = hdao.buscar(idhab);
-                        String estAct = "no disponible";
+                        String estAct = "No disponible";
                         hdao.actualizarEstado(idhab, estAct);
                     }
                     //Guardar Reserva

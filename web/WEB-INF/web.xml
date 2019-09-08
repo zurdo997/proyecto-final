@@ -8,6 +8,10 @@
         <servlet-name>ValidarInicio</servlet-name>
         <servlet-class>Controlador.ValidarInicio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorIMG</servlet-name>
+        <servlet-class>Controlador.ControladorIMG</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ValidarInicio</servlet-name>
         <url-pattern>/ValidarInicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorIMG</servlet-name>
+        <url-pattern>/ControladorIMG</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

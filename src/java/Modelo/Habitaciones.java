@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.io.InputStream;
+
 /**
  *
  * @author Desarrollo Web
@@ -17,12 +19,13 @@ public class Habitaciones {
     int numero;
     double precio;
     String estado;
+    InputStream foto;
     
     public Habitaciones() {
         
     }
 
-    public Habitaciones(int id,String tipo_hab, int cant, int piso, int numero, double precio, String estado) {
+    public Habitaciones(int id,String tipo_hab, int cant, int piso, int numero, double precio, String estado, InputStream foto) {
         this.id = id;
         this.tipo_hab = tipo_hab;
         this.cant = cant;
@@ -30,8 +33,17 @@ public class Habitaciones {
         this.numero = numero;
         this.precio = precio;
         this.estado = estado;
+        this.foto = foto;
     }
 
+    public InputStream getFoto() {
+        return foto;
+    }
+
+    public void setFoto(InputStream foto) {
+        this.foto = foto;
+    }
+    
     public String getTipo_hab() {
         return tipo_hab;
     }
