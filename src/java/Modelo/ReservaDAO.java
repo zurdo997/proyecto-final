@@ -45,8 +45,8 @@ public class ReservaDAO {
             ps = con.prepareStatement(sql);
             ps.setInt(1, r.getIdcliente());
             ps.setInt(2, r.getIdempleado());
-            ps.setString(3, r.getFecha());
-            ps.setString(4, r.getFecha2());
+            ps.setDate(3, r.getFecha());
+            ps.setDate(4, r.getFecha2());
             ps.setInt(5, r.getCantHab());
             ps.setDouble(6, r.getMonto());
             ps.executeUpdate();

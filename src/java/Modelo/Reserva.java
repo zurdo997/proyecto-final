@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.sql.Date;
+
 /**
  *
  * @author Alan97
@@ -17,8 +19,8 @@ public class Reserva {
     int idempleado;
     int idhabitacion;
     String descripcionH;
-    String fecha;
-    String fecha2;
+    Date fecha;
+    Date fecha2;
     int cantHab;
     double precio;
     double subtotal;
@@ -28,7 +30,7 @@ public class Reserva {
 
     }
 
-    public Reserva(int id, int item, int idcliente, int idempleado, int idhabitacion, String descripcionH, String fecha, String fecha2, int cantHab, double precio, double subtotal, double monto) {
+    public Reserva(int id, int item, int idcliente, int idempleado, int idhabitacion, String descripcionH, Date fecha, Date fecha2, int cantHab, double precio, double subtotal, double monto) {
         this.id = id;
         this.item = item;
         this.idcliente = idcliente;
@@ -67,19 +69,20 @@ public class Reserva {
         this.id = id;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    public String getFecha2() {
+
+    public Date getFecha2() {
         return fecha2;
     }
 
-    public void setFecha2(String fecha2) {
+    public void setFecha2(Date fecha2) {
         this.fecha2 = fecha2;
     }
 

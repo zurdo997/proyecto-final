@@ -29,6 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import javax.servlet.annotation.MultipartConfig;
+import org.joda.time.*;
 
 /**
  *
@@ -49,12 +50,14 @@ public class Controlador extends HttpServlet {
     ServiciosDAO serdao = new ServiciosDAO();
     Contacto cont = new Contacto();
     ContactoDAO contdao = new ContactoDAO();
+    DateTime inicio = new DateTime();
+    DateTime fin = new DateTime();
     int idh;
     int ide;
     int idc;
     int ids;
     int idr;
-    
+
     Reserva res = new Reserva();
     ReservaDAO resdao = new ReservaDAO();
     List<Reserva> lista = new ArrayList<>();
@@ -65,6 +68,8 @@ public class Controlador extends HttpServlet {
     String descripcion;
     String estado;
     String fecha;
+    Date date1 = null;
+    Date date2 = null;
     String fecha2;
     double subtotal;
     double totalPagar;
@@ -76,20 +81,20 @@ public class Controlador extends HttpServlet {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
         habitaciones = habdao.listar();
-        
+
         if (menu.equals("PantallaPrincipal")) {
             request.getRequestDispatcher("PantallaPrincipal.jsp").forward(request, response);
         }
-        
+
         if (menu.equals("HabitacionesIMG")) {
-            switch(accion) {
+            switch (accion) {
                 default:
                     request.setAttribute("habitaciones2", habitaciones);
                     request.getRequestDispatcher("HabitacionesIMG.jsp").forward(request, response);
             }
             request.getRequestDispatcher("HabitacionesIMG.jsp").forward(request, response);
         }
-        
+
         if (menu.equals("Registrar")) {
             switch (accion) {
                 case "AgregarE":
@@ -158,7 +163,7 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
         }
-        
+
         if (menu.equals("Servicios")) {
             switch (accion) {
                 case "Listar":
@@ -189,14 +194,14 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                    ids= Integer.parseInt(request.getParameter("id_serv"));
+                    ids = Integer.parseInt(request.getParameter("id_serv"));
                     serdao.eliminar(ids);
                     request.getRequestDispatcher("Controlador?menu=Servicios&accion=Listar").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("Servicios.jsp").forward(request, response);
         }
-        
+
         if (menu.equals("Habitaciones")) {
             switch (accion) {
                 case "Listar":
@@ -302,9 +307,9 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("Clientes.jsp").forward(request, response);
         }
-        
+
         if (menu.equals("Contacto")) {
-            switch(accion) {
+            switch (accion) {
                 case "Enviar":
                     String nom = request.getParameter("txtNombre");
                     String ape = request.getParameter("txtApellido");
@@ -323,9 +328,9 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("Contacto.jsp").forward(request, response);
         }
-        
+
         if (menu.equals("NuevaReserva")) {
-            switch(accion) {
+            switch (accion) {
                 case "BuscarCliente":
                     String dni = request.getParameter("dniCliente");
                     cl.setDni(dni);
@@ -350,14 +355,21 @@ public class Controlador extends HttpServlet {
                     precio = Double.parseDouble(request.getParameter("precio"));
                     cant = Integer.parseInt(request.getParameter("cant"));
                     fecha = request.getParameter("fechaE");
+                    date1 = java.sql.Date.valueOf(fecha);
+                    inicio = DateTime.parse(fecha);
                     fecha2 = request.getParameter("fechaS");
+                    date2 = java.sql.Date.valueOf(fecha2);
+                    fin = DateTime.parse(fecha2);
+                    int dias = Days.daysBetween(inicio.toLocalDate(),fin.toLocalDate()).getDays();
+                    dias += 1;
                     subtotal = precio * cant;
+                    subtotal = precio * dias;
                     res = new Reserva();
                     res.setItem(item);
                     res.setIdhabitacion(cod);
                     res.setDescripcionH(descripcion);
-                    res.setFecha(fecha);
-                    res.setFecha2(fecha2);
+                    res.setFecha(date1);
+                    res.setFecha2(date2);
                     res.setPrecio(precio);
                     res.setCantHab(cant);
                     res.setSubtotal(subtotal);
@@ -367,6 +379,14 @@ public class Controlador extends HttpServlet {
                     }
                     request.setAttribute("totalpagar", totalPagar);
                     request.setAttribute("lista", lista);
+                    break;
+                case "Eliminar":
+                    int id2 = Integer.parseInt(request.getParameter("idh"));
+                    for (int i = 0; i < lista.size(); i++) {
+                        if (lista.get(i).getIdhabitacion() == id2) {
+                            lista.remove(i);
+                        }
+                    }
                     break;
                 case "GenerarReserva":
                     for (int i = 0; i < lista.size(); i++) {
@@ -381,12 +401,12 @@ public class Controlador extends HttpServlet {
                     //Guardar Reserva
                     res.setIdcliente(cl.getId());
                     res.setIdempleado(em.getId());//Revisar: envía id_empleado = 0
-                    res.setFecha(fecha);
-                    res.setFecha2(fecha2);
+                    res.setFecha(date1);
+                    res.setFecha2(date2);
                     res.setCantHab(cant);
                     res.setMonto(totalPagar);
                     resdao.guardarReserva(res);
-                    
+
                     //Detalle Reserva
                     int idr = Integer.parseInt(resdao.IdReservas());
                     for (int i = 0; i < lista.size(); i++) {
@@ -400,6 +420,10 @@ public class Controlador extends HttpServlet {
                     lista = new ArrayList<>();
                     break;
                 default:
+                    hab = new Habitaciones();
+                    lista = new ArrayList<>();
+                    item = 0;
+                    totalPagar = 0.0;
                     request.getRequestDispatcher("Reservas.jsp").forward(request, response);
             }
             request.getRequestDispatcher("Reservas.jsp").forward(request, response);

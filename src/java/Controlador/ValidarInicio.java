@@ -50,7 +50,14 @@ public class ValidarInicio extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        /*String action = (request.getPathInfo() != null?request.getPathInfo():"http://localhost:8080/WEB-JAVA-ALAN_FRANCO/ValidarInicio/out");
+        HttpSession sesion = request.getSession();
+        if(action.equals("/out")){
+            sesion.invalidate();
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }else{
+           
+        }*/
     }
 
     /**
@@ -67,7 +74,7 @@ public class ValidarInicio extends HttpServlet {
         processRequest(request, response);
         String accion = request.getParameter("accion");
         if (accion.equalsIgnoreCase("Ingresar")) {
-            //HttpSession sesion = request.getSession(true);
+            /*HttpSession sesion = request.getSession();*/
             String user = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");
             em = emdao.validar(user, pass);
