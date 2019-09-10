@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Foto</label>
-                                <input type="file" class="form-control-file" style="width: 300px" name="txtFoto" required="required">
+                                <input type="file" class="form-control-file" style="width: 300px" name="txtFoto">
                             </div>
                             <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
                             <input type="submit" name="accion" value="Actualizar" class="btn btn-success">

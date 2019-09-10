@@ -21,6 +21,19 @@
             }
         </style>
         <script src="https://kit.fontawesome.com/265037a891.js"></script>
+        <SCRIPT>
+            function confirmar()
+            {
+                if (!confirm("¿Deseas eliminar este cliente?"))
+                {
+                    return false; //no se borra
+                } else
+                {
+//si se borra
+                    return true;
+                }
+            }
+        </SCRIPT>
     </head>
     <body style="font-family: 'Nunito', sans-serif">
         <div class="d-flex">
@@ -97,8 +110,7 @@
                                         <td>${list.getCantHab()}</td>
                                         <td>${list.getSubtotal()}</td>
                                         <td class="d-flex">
-                                            <input type="hidden" id="idh" value="${list.getIdhabitacion()}">
-                                            <a href="#" id="btnDelete" class="btn btn-danger" style="margin-left: 5px" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="Controlador?menu=NuevaReserva&accion=Eliminar" value="" onclick="javascript:return confirmar()" class="btn btn-danger" style="margin-left: 5px" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -110,7 +122,6 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <a href="Controlador?menu=NuevaReserva&accion=GenerarReserva" onclick="print()" class="btn btn-success">Generar Reserva</a>
-                                <a href="#" class="btn btn-danger" style="margin-left: 5px">Cancelar</a>
                             </div>
                             <div class="col-sm-6 ml-auto d-flex">                                
                                 <label class=" col-sm-6 text-right mt-2">Total a Pagar</label>                                                       
@@ -124,7 +135,5 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="js/funciones.js" type="text/javascript"></script>
     </body>
 </html>

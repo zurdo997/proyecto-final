@@ -381,6 +381,9 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("lista", lista);
                     break;
                 case "Eliminar":
+                    if (true) {
+                        
+                    }
                     int id2 = Integer.parseInt(request.getParameter("idh"));
                     for (int i = 0; i < lista.size(); i++) {
                         if (lista.get(i).getIdhabitacion() == id2) {
