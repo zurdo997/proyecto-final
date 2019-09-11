@@ -71,11 +71,11 @@
                         </div>
                         <div class="form-group">
                             <span class="form-label">Check In</span>
-                            <input class="form-control" name="fechaE" value="" style="border: 1px solid #20c997;" type="date" min="2019-09-01" max="2025-01-01">
+                            <input class="form-control" name="fechaE" value="" style="border: 1px solid #20c997;" type="date" min="2019-09-10" max="2025-01-01">
                         </div>
                         <div class="form-group">
                             <span class="form-label">Check out</span>
-                            <input class="form-control" name="fechaS" value="" style="border: 1px solid #20c997;" type="date" min="2019-09-01" max="2025-01-01">
+                            <input class="form-control" name="fechaS" value="" style="border: 1px solid #20c997;" type="date" min="2019-09-10" max="2025-01-01">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                     </form>
