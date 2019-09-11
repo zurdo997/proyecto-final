@@ -16,7 +16,6 @@ public class Reserva {
     int id;
     int item;
     int idcliente;
-    int idempleado;
     int idhabitacion;
     String descripcionH;
     Date fecha;
@@ -30,11 +29,10 @@ public class Reserva {
 
     }
 
-    public Reserva(int id, int item, int idcliente, int idempleado, int idhabitacion, String descripcionH, Date fecha, Date fecha2, int cantHab, double precio, double subtotal, double monto) {
+    public Reserva(int id, int item, int idcliente, int idhabitacion, String descripcionH, Date fecha, Date fecha2, int cantHab, double precio, double subtotal, double monto) {
         this.id = id;
         this.item = item;
         this.idcliente = idcliente;
-        this.idempleado = idempleado;
         this.idhabitacion = idhabitacion;
         this.descripcionH = descripcionH;
         this.fecha = fecha;
@@ -133,13 +131,4 @@ public class Reserva {
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
-
-    public int getIdempleado() {
-        return idempleado;
-    }
-
-    public void setIdempleado(int idempleado) {
-        this.idempleado = idempleado;
-    }
-
 }

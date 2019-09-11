@@ -24,12 +24,12 @@
         <SCRIPT>
             function confirmar()
             {
-                if (!confirm("¿Deseas eliminar este cliente?"))
+                if (!confirm("¿Deseas eliminar esta reserva?"))
                 {
                     return false; //no se borra
                 } else
                 {
-//si se borra
+                    //si se borra
                     return true;
                 }
             }
@@ -110,7 +110,7 @@
                                         <td>${list.getCantHab()}</td>
                                         <td>${list.getSubtotal()}</td>
                                         <td class="d-flex">
-                                            <a href="Controlador?menu=NuevaReserva&accion=Eliminar" value="" onclick="javascript:return confirmar()" class="btn btn-danger" style="margin-left: 5px" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="Controlador?menu=NuevaReserva&accion=Eliminar&idh=${list.getIdhabitacion()}" onclick="javascript:return confirmar()" class="btn btn-danger" style="margin-left: 5px" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

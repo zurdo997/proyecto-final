@@ -360,7 +360,7 @@ public class Controlador extends HttpServlet {
                     fecha2 = request.getParameter("fechaS");
                     date2 = java.sql.Date.valueOf(fecha2);
                     fin = DateTime.parse(fecha2);
-                    int dias = Days.daysBetween(inicio.toLocalDate(),fin.toLocalDate()).getDays();
+                    int dias = Days.daysBetween(inicio.toLocalDate(), fin.toLocalDate()).getDays();
                     dias += 1;
                     subtotal = precio * cant;
                     subtotal = precio * dias;
@@ -381,9 +381,6 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("lista", lista);
                     break;
                 case "Eliminar":
-                    if (true) {
-                        
-                    }
                     int id2 = Integer.parseInt(request.getParameter("idh"));
                     for (int i = 0; i < lista.size(); i++) {
                         if (lista.get(i).getIdhabitacion() == id2) {
@@ -403,7 +400,6 @@ public class Controlador extends HttpServlet {
                     }
                     //Guardar Reserva
                     res.setIdcliente(cl.getId());
-                    res.setIdempleado(em.getId());//Revisar: envía id_empleado = 0
                     res.setFecha(date1);
                     res.setFecha2(date2);
                     res.setCantHab(cant);

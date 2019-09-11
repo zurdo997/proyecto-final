@@ -39,16 +39,15 @@ public class ReservaDAO {
     }
     
     public int guardarReserva(Reserva r) {
-        String sql = "insert into reservas(id_cliente, id_empleado, entrada, salida, cant_hab, monto)values(?,?,?,?,?,?)";
+        String sql = "insert into reservas(id_cliente, entrada, salida, cant_hab, monto)values(?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, r.getIdcliente());
-            ps.setInt(2, r.getIdempleado());
-            ps.setDate(3, r.getFecha());
-            ps.setDate(4, r.getFecha2());
-            ps.setInt(5, r.getCantHab());
-            ps.setDouble(6, r.getMonto());
+            ps.setDate(2, r.getFecha());
+            ps.setDate(3, r.getFecha2());
+            ps.setInt(4, r.getCantHab());
+            ps.setDouble(5, r.getMonto());
             ps.executeUpdate();
         } catch (Exception e) {
         }
