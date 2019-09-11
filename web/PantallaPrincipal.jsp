@@ -4,6 +4,7 @@
     Author     : Alan
 --%>
 
+<%@page import="Modelo.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,9 +33,12 @@
                     <li class="nav-item">
                         <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Servicios&accion=Listar" target="myFrame">Servicios</a>
                     </li>
-                    <li class="nav-item">
+                    <%  Empleado nombre = (Empleado) request.getAttribute("usuario");
+                        if (nombre.getNom().equals("Alan")) {%>
+                     <li class="nav-item">
                         <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=Empleados&accion=Listar" target="myFrame">Empleados</a>
-                    </li>
+                    </li>       
+                    <% } %>
                     <li class="nav-item">
                         <a style="margin-left: 10px;border: none" class="btn btn-outline-light" onclick="$('iframe').hide();$('iframe#a').show();" href="Controlador?menu=HabitacionesIMG&accion=default" target="myFrame">Habitaciones</a>
                     </li>
@@ -88,7 +92,7 @@
                             <h2 class="display-4" style="color:#00f0e8">SUITE GOBERNADOR</h2>
                         </div>
                     </div>
-                    <div class="carousel-item" style="background-image: url(imagenes/suite-junior.jpg)">
+                    <div class="carousel-item" style="background-image: url(imagenes/galeria-suite-junior-2.jpg)">
                         <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4" style="color:#00f0e8">SUITE JUNIOR</h2>
                         </div>
