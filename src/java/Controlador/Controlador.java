@@ -385,6 +385,7 @@ public class Controlador extends HttpServlet {
                     for (int i = 0; i < lista.size(); i++) {
                         if (lista.get(i).getIdhabitacion() == id2) {
                             lista.remove(i);
+                            totalPagar = 0;
                         }
                     }
                     break;
